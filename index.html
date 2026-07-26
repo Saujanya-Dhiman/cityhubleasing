@@ -1,0 +1,2520 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23D4A853' d='M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-16-16H32A16,16,0,0,0,16,32V208H8a8,8,0,0,0,0,16H248a8,8,0,0,0,0-16ZM32,32H128a8,8,0,0,1,8,8V208H32ZM208,208H160V96h48Z'/%3E%3C/svg%3E">
+
+  <title>Premium Office Space for Rent in Mohali & Chandigarh | CityHub Leasing</title>
+  <meta name="description"
+    content="CityHub Leasing offers premium office spaces for rent in Mohali and Chandigarh. Discover private offices, coworking spaces, and furnished offices in prime business locations. Best commercial property deals.">
+  <meta name="keywords"
+    content="office space for rent in Mohali, office space for rent in Chandigarh, coworking space Mohali, furnished office space Chandigarh, commercial real estate Mohali, private offices rent Chandigarh, business center Tricity, warehouse for rent Mohali, showroom for rent Chandigarh">
+  <meta name="author" content="CityHub Leasing">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cityhubleasing.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cityhubleasing.netlify.app/">
+  <meta property="og:title" content="Premium Office Space for Rent in Mohali & Chandigarh | CityHub Leasing">
+  <meta property="og:description"
+    content="Find the best office spaces, coworking areas, and commercial properties for rent in Mohali and Chandigarh with CityHub Leasing.">
+  <meta property="og:image" content="https://cityhubleasing.netlify.app/hero_office.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://cityhubleasing.netlify.app/">
+  <meta property="twitter:title" content="Premium Office Space for Rent in Mohali & Chandigarh | CityHub Leasing">
+  <meta property="twitter:description"
+    content="Find the best office spaces, coworking areas, and commercial properties for rent in Mohali and Chandigarh with CityHub Leasing.">
+  <meta property="twitter:image" content="https://cityhubleasing.netlify.app/hero_office.png">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9M2WH6F9C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-D9M2WH6F9C');
+  </script>
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"CityHub Leasing","image":"https://cityhubleasing.netlify.app/hero_office.png","@id":"https://cityhubleasing.netlify.app/","url":"https://cityhubleasing.netlify.app/","telephone":"+91-7696510579","address":{"@type":"PostalAddress","streetAddress":"Phase 8B, Industrial Area","addressLocality":"Mohali","postalCode":"160055","addressRegion":"Punjab","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":30.7046,"longitude":76.7179},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"RealEstateAgent","name":"CityHub Leasing","url":"https://www.cityhubleasing.com/","description":"Premium office spaces, warehouses, and showrooms for rent in Mohali and Chandigarh.","telephone":"+917696510579","address":{"@type":"PostalAddress","streetAddress":"Phase 8b, Industrial Area, Sec-74","addressLocality":"Mohali","addressRegion":"Punjab","addressCountry":"IN"},"sameAs":["https://www.instagram.com/cityhub_leasing"]}
+  </script>
+
+  <!-- Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+  <style>
+    /* ============================
+       TOKENS & RESET
+    ============================ */
+    :root {
+      --ink: #0A0A0F;
+      --ink-80: rgba(10, 10, 15, 0.8);
+      --ink-40: rgba(10, 10, 15, 0.4);
+      --ink-10: rgba(10, 10, 15, 0.06);
+      --gold: #D4A853;
+      --gold-lt: #E8C47A;
+      --gold-dk: #B8863A;
+      --paper: #FAFAF8;
+      --white: #FFFFFF;
+      --slate: #64748B;
+      --slate-lt: #94A3B8;
+      --border: rgba(10, 10, 15, 0.1);
+      --border-dk: rgba(255, 255, 255, 0.12);
+
+      --f-display: 'Playfair Display', Georgia, serif;
+      --f-body: 'DM Sans', system-ui, sans-serif;
+      --f-mono: 'DM Mono', monospace;
+
+      --r-sm: 8px;
+      --r-md: 16px;
+      --r-lg: 24px;
+      --r-xl: 40px;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: rgba(212, 168, 83, 0.2);
+      color: var(--gold-dk);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--paper);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ============================
+       PAGE LOADER
+    ============================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--ink);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .loader-logo {
+      font-family: var(--f-display);
+      font-size: 36px;
+      color: var(--white);
+      letter-spacing: -1px;
+      opacity: 0;
+    }
+
+    .loader-logo span {
+      color: var(--gold);
+    }
+
+    .loader-bar-track {
+      width: 200px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .loader-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      border-radius: 99px;
+    }
+
+    /* ============================
+       NAVBAR
+    ============================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 5%;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s var(--ease-in-out), box-shadow 0.4s var(--ease-in-out);
+    }
+
+    nav.hero-nav {
+      background: transparent;
+    }
+
+    nav.scrolled {
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .logo {
+      font-family: var(--f-display);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s;
+      letter-spacing: -0.5px;
+    }
+
+    nav.scrolled .logo {
+      color: var(--ink);
+    }
+
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-left: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links>a,
+    .dropdown>.nav-trigger {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.3s;
+      letter-spacing: 0.01em;
+    }
+
+    nav.scrolled .nav-links>a,
+    nav.scrolled .dropdown>.nav-trigger {
+      color: var(--slate);
+    }
+
+    .nav-links>a:hover,
+    .dropdown>.nav-trigger:hover {
+      color: var(--gold);
+    }
+
+    nav.scrolled .nav-links>a:hover,
+    nav.scrolled .dropdown>.nav-trigger:hover {
+      color: var(--ink);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 20px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: var(--white);
+      min-width: 260px;
+      border-radius: var(--r-lg);
+      box-shadow: 0 24px 60px rgba(10, 10, 15, 0.14), 0 0 0 1px var(--border);
+      padding: 10px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s var(--ease-out-expo), transform 0.25s var(--ease-out-expo), visibility 0.25s;
+    }
+
+    .dropdown-panel::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+    }
+
+    .dropdown:hover .dropdown-panel,
+    .dropdown.open .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-panel a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: var(--r-md);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .dropdown-panel a:hover {
+      background: var(--ink-10);
+      color: var(--ink);
+      transform: translateX(3px);
+    }
+
+    .dropdown-panel a i {
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    /* CTA button in nav */
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--gold);
+      color: var(--ink) !important;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s, background 0.25s;
+      box-shadow: 0 0 0 0 rgba(212, 168, 83, 0);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212, 168, 83, 0.35);
+      background: var(--gold-lt);
+    }
+
+    /* Mobile toggle */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--white);
+      font-size: 26px;
+      transition: color 0.3s;
+    }
+
+    nav.scrolled .mobile-toggle {
+      color: var(--ink);
+    }
+
+    /* ============================
+       HERO
+    ============================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--ink);
+      overflow: hidden;
+      padding: 0 5%;
+    }
+
+    /* Background image with parallax container */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('hero_office.png') center/cover no-repeat;
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg,
+          rgba(10, 10, 15, 0.92) 0%,
+          rgba(10, 10, 15, 0.75) 55%,
+          rgba(10, 10, 15, 0.55) 100%);
+    }
+
+    /* Ambient gold glow */
+    .hero-glow {
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 140px 0 100px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+      opacity: 0;
+    }
+
+    .eyebrow-pill {
+      background: rgba(212, 168, 83, 0.15);
+      border: 1px solid rgba(212, 168, 83, 0.3);
+      color: var(--gold-lt);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 99px;
+    }
+
+    .eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-headline {
+      font-family: var(--f-display);
+      font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+      margin-bottom: 28px;
+      max-width: 900px;
+      opacity: 0;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 19px);
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 520px;
+      margin-bottom: 52px;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+      opacity: 0;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(212, 168, 83, 0.4);
+    }
+
+    .btn-primary:hover::after {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.3s var(--ease-out-expo);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Trust bar / stats strip */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 40px;
+      flex-wrap: wrap;
+      opacity: 0;
+    }
+
+    .hero-stat {
+      flex: 1;
+      min-width: 160px;
+      padding-right: 40px;
+    }
+
+    .hero-stat:not(:last-child) {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      margin-right: 40px;
+    }
+
+    .stat-num {
+      font-family: var(--f-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-num span {
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* Scroll indicator */
+    .scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-cue-text {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      font-family: var(--f-mono);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% {
+        top: -100%;
+      }
+
+      50% {
+        top: 0%;
+      }
+
+      100% {
+        top: 100%;
+      }
+    }
+
+    /* ============================
+       MARQUEE / TICKER
+    ============================ */
+    .ticker-section {
+      background: var(--gold);
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-family: var(--f-mono);
+    }
+
+    .ticker-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(10, 10, 15, 0.4);
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ============================
+       SECTION WRAPPER
+    ============================ */
+    .section {
+      padding: 120px 5%;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-dk);
+      margin-bottom: 20px;
+      font-family: var(--f-mono);
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ============================
+       SPACES SECTION
+    ============================ */
+    .spaces-section {
+      background: var(--paper);
+    }
+
+    .spaces-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .space-card {
+      background: var(--white);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .space-card:hover {
+      transform: translateY(-10px) rotate3d(0.5, 0, 0.5, 2deg);
+      box-shadow: 0 40px 80px rgba(10, 10, 15, 0.12);
+    }
+
+    .space-card-image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .space-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+
+    .space-card:hover .space-card-image img {
+      transform: scale(1.05);
+    }
+
+    .space-card-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(10, 10, 15, 0.6);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-family: var(--f-mono);
+    }
+
+    .space-card-body {
+      padding: 28px 28px 32px;
+    }
+
+    .space-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--r-md);
+      background: rgba(212, 168, 83, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--gold-dk);
+      margin-bottom: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .space-card:hover .space-card-icon {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .space-card h3 {
+      font-family: var(--f-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .space-card p {
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .card-link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold-dk);
+      transition: gap 0.25s var(--ease-out-expo), color 0.25s;
+    }
+
+    .card-action i {
+      font-size: 16px;
+    }
+
+    .space-card:hover .card-action {
+      gap: 14px;
+      color: var(--ink);
+    }
+
+    /* ============================
+       FEATURES / WHY US (Editorial Split)
+    ============================ */
+    .features-section {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .features-section .section-title {
+      color: var(--white);
+    }
+
+    .features-section .section-desc {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .features-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .features-left {}
+
+    .features-right {
+      position: relative;
+    }
+
+    .features-image-wrap {
+      position: relative;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+
+    .features-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Floating badge on image */
+    .image-badge {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 24px;
+      border-radius: var(--r-lg);
+      color: var(--white);
+      min-width: 200px;
+    }
+
+    .image-badge-num {
+      font-family: var(--f-display);
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .image-badge-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 400;
+    }
+
+    .feature-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      transition: border-color 0.3s;
+    }
+
+    .feature-item:first-child {
+      padding-top: 0;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .feature-item:hover {
+      border-color: rgba(212, 168, 83, 0.2);
+    }
+
+    .feature-num {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.6;
+      padding-top: 4px;
+      min-width: 28px;
+      font-weight: 500;
+    }
+
+    .feature-text h4 {
+      font-family: var(--f-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.65;
+    }
+
+    /* ============================
+       LOCATIONS SECTION
+    ============================ */
+    .locations-section {
+      background: var(--paper);
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .location-card {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+
+    .location-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+      filter: brightness(0.7);
+    }
+
+    .location-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(0.55);
+    }
+
+    .location-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.75) 0%, transparent 60%);
+    }
+
+    .location-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px;
+      transform: translateY(0);
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .location-card:hover .location-info {
+      transform: translateY(-8px);
+    }
+
+    .location-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: var(--f-mono);
+      margin-bottom: 8px;
+    }
+
+    .location-name {
+      font-family: var(--f-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .location-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .location-arrow {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 20px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s, transform 0.3s var(--ease-out-expo);
+    }
+
+    .location-card:hover .location-arrow {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ============================
+       FAQ
+    ============================ */
+    .faq-section {
+      background: var(--white);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .faq-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .faq-left .section-desc {
+      margin-bottom: 36px;
+    }
+
+    .faq-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: gap 0.25s var(--ease-out-expo), color 0.25s;
+    }
+
+    .faq-cta-link:hover {
+      color: var(--gold-dk);
+      gap: 16px;
+    }
+
+    .faq-cta-link i {
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      user-select: none;
+      gap: 20px;
+    }
+
+    .faq-q-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      font-family: var(--f-display);
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover .faq-q-text {
+      color: var(--gold-dk);
+    }
+
+    .faq-toggle {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--slate);
+      transition: border-color 0.3s, background 0.3s, color 0.3s, transform 0.35s var(--ease-out-expo);
+    }
+
+    .faq-item.active .faq-toggle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s var(--ease-out-expo);
+    }
+
+    .faq-answer-inner {
+      padding-bottom: 24px;
+    }
+
+    .faq-answer-inner p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.75;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+    }
+
+    /* ============================
+       CTA SECTION
+    ============================ */
+    .cta-section {
+      padding: 0 5% 120px;
+      background: var(--paper);
+    }
+
+    .cta-block {
+      background: var(--ink);
+      border-radius: var(--r-xl);
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.15) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-block::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: 20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-text h2 {
+      font-family: var(--f-display);
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .cta-text h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-text p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 460px;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 99px;
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s, background 0.3s;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(212, 168, 83, 0.35);
+      background: var(--gold-lt);
+    }
+
+    .btn-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color 0.3s, gap 0.25s var(--ease-out-expo);
+      padding: 0 8px;
+    }
+
+    .btn-text-link:hover {
+      color: rgba(255, 255, 255, 0.7);
+      gap: 12px;
+    }
+
+    .btn-text-link i {
+      font-size: 16px;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-top {
+      padding: 80px 5% 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2.2fr 1fr 1fr 1.3fr;
+      gap: 48px;
+      border-bottom: 1px solid var(--border-dk);
+    }
+
+    .footer-brand {}
+
+    .footer-brand .logo {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 300px;
+      margin-bottom: 28px;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-dk);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.5);
+      transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s var(--ease-out-expo);
+    }
+
+    .social-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+      transform: translateY(-3px);
+    }
+
+    .footer-col h5 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 20px;
+      font-family: var(--f-mono);
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      transition: color 0.25s, padding-left 0.25s var(--ease-out-expo);
+    }
+
+    .footer-col a:hover {
+      color: var(--gold-lt);
+      padding-left: 4px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact-item i {
+      font-size: 18px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+      transition: color 0.25s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--gold);
+    }
+
+    /* ============================
+       REVEAL / ANIMATION UTILS
+    ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 1100px) {
+      .spaces-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-left {
+        position: static;
+      }
+
+      .cta-block {
+        grid-template-columns: 1fr;
+        padding: 60px 40px;
+      }
+
+      .cta-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .features-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .features-right {
+        order: -1;
+      }
+
+      .features-image-wrap {
+        aspect-ratio: 16/9;
+      }
+
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 80px 5%;
+      }
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 76px 0 0 0;
+        background: rgba(10, 10, 15, 0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 32px 24px;
+        gap: 4px;
+        transform: translateX(100%);
+        transition: transform 0.4s var(--ease-out-expo);
+        overflow-y: auto;
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links>a,
+      .dropdown>.nav-trigger {
+        color: rgba(255, 255, 255, 0.7);
+        padding: 14px 0;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .dropdown-panel {
+        position: static;
+        transform: none !important;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: var(--r-md);
+        margin-top: 8px;
+        display: none;
+      }
+
+      .dropdown.open .dropdown-panel {
+        display: flex;
+      }
+
+      .dropdown-panel a {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .dropdown-panel a:hover {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-cta {
+        margin-top: 12px;
+        text-align: center;
+        justify-content: center;
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+
+      .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .spaces-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-headline {
+        letter-spacing: -1.5px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .hero-stat:not(:last-child) {
+        border-right: none;
+        margin-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 24px;
+      }
+
+      .hero-stat {
+        padding-right: 0;
+        min-width: 100%;
+      }
+
+      .cta-block {
+        padding: 48px 28px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .ticker-track {
+        animation: none;
+      }
+    }
+  </style>
+  <!-- RESPONSIVE FIXES -->
+  <style>
+    /* Prevent horizontal scrolling globally */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img,
+    video,
+    iframe {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Fix navigation & dropdown flickering */
+    @media (max-width: 768px) {
+      .nav-links {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        padding-bottom: 40px !important;
+        /* Touch friendly bottom space */
+        overflow-y: auto !important;
+      }
+
+      .dropdown-panel,
+      .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        display: none !important;
+        flex-direction: column !important;
+        margin-top: 8px !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      .dropdown.open .dropdown-panel,
+      .dropdown.active .dropdown-menu,
+      .dropdown-menu.show {
+        display: flex !important;
+      }
+
+      .dropdown-panel a,
+      .dropdown-menu a {
+        justify-content: flex-start !important;
+        padding: 14px 16px !important;
+        /* Larger touch targets */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+      }
+
+      /* Fix overlapping and grid layouts on mobile */
+      .spaces-grid,
+      .locations-grid,
+      .admin-grid,
+      .features-layout,
+      .footer-top {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-inner,
+      .section,
+      .container {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      .cta-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 16px !important;
+      }
+
+      .hero-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }
+  </style>
+  <!-- HAMBURGER MENU FIX -->
+  <style>
+    @media (max-width: 768px) {
+
+      /* Fix containing block issue and background */
+      .nav-links {
+        position: fixed !important;
+        top: 76px !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100vh - 76px) !important;
+        height: calc(100dvh - 76px) !important;
+        background: rgba(10, 10, 15, 0.98) !important;
+        bottom: auto !important;
+        right: auto !important;
+        padding-top: 32px !important;
+      }
+
+      /* Fix text color in scrolled state so it's readable on dark background */
+      nav.scrolled .nav-links>a,
+      nav.scrolled .dropdown>.nav-trigger {
+        color: rgba(255, 255, 255, 0.85) !important;
+      }
+
+      nav.scrolled .nav-links>a:hover,
+      nav.scrolled .dropdown>.nav-trigger:hover {
+        color: var(--gold) !important;
+      }
+
+      /* Ensure dropdown links are readable */
+      .dropdown-panel a,
+      .dropdown-menu a {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
+
+      .dropdown-panel a:hover,
+      .dropdown-panel a.active-link,
+      .dropdown-menu a:hover,
+      .dropdown-menu a.active-link {
+        color: var(--gold) !important;
+        background: rgba(212, 168, 83, 0.12) !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE LOADER -->
+  <div id="loader">
+    <div class="loader-logo">City<span>Hub</span></div>
+    <div class="loader-bar-track">
+      <div class="loader-bar" id="loaderBar"></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="hero-nav">
+    <a href="index.html" class="logo">
+      CityHub<div class="logo-dot"></div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown" id="spacesDropdown">
+        <span class="nav-trigger">Spaces <i class="ph ph-caret-down" style="font-size:12px;"></i></span>
+        <div class="dropdown-panel">
+          <a href="office-space-mohali.html"><i class="ph ph-briefcase"></i> Office Spaces Mohali</a>
+          <a href="office-space-chandigarh.html"><i class="ph ph-buildings"></i> Office Spaces Chandigarh</a>
+          <a href="warehouse-for-rent.html"><i class="ph ph-warehouse"></i> Warehouses for Rent</a>
+          <a href="showroom-for-rent.html"><i class="ph ph-storefront"></i> Showrooms for Rent</a>
+        </div>
+      </div>
+
+      <a href="adminLogin.html">Admin</a>
+      <a href="contact.html" class="nav-cta">Book a Tour <i class="ph ph-arrow-right" style="font-size:14px;"></i></a>
+    </div>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <i class="ph ph-list" id="toggleIcon"></i>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-inner container">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-pill">Now Leasing</span>
+        <span class="eyebrow-line"></span>
+      </div>
+
+      <h1 class="hero-headline">
+        Where<br>
+        <em>Ambition</em><br>
+        Finds Its Address
+      </h1>
+
+      <p class="hero-sub">
+        Premium office spaces, warehouses, and showrooms in Mohali &amp; Chandigarh â€” crafted for businesses that
+        refuse
+        to settle.
+      </p>
+
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary">
+          Book a Site Visit
+          <i class="ph ph-arrow-right"></i>
+        </a>
+        <a href="#spaces" class="btn-ghost">
+          Explore Spaces
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-num">2k<span>+</span></div>
+          <div class="stat-label">Active Listings</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">1k</div>
+          <div class="stat-label">Prime Locations</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Plug &amp; Play Ready</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <span class="scroll-cue-text">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker-section" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- items duplicated in JS for infinite loop -->
+    </div>
+  </div>
+
+  <!-- SPACES SECTION -->
+  <section id="spaces" class="section spaces-section">
+    <div class="container">
+      <div class="spaces-header">
+        <div>
+          <span class="section-eyebrow reveal">Our Spaces</span>
+          <h2 class="section-title reveal">Flexible Workspaces<br>Built for Growth</h2>
+        </div>
+        <p class="section-desc reveal">Thoughtfully designed environments for modern startups, enterprises, and everyone
+          in between.</p>
+      </div>
+
+      <div class="spaces-grid">
+        <!-- Card 1 -->
+        <article class="space-card reveal">
+          <div class="space-card-image">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800"
+              alt="Private office suite" loading="lazy">
+            <span class="space-card-tag">Most Popular</span>
+          </div>
+          <div class="space-card-body">
+            <div class="space-card-icon"><i class="ph ph-door-open"></i></div>
+            <h3>Private Offices</h3>
+            <p>Secure, fully-equipped private suites with enterprise-grade infrastructure. Ideal for focused teams of
+              any size.</p>
+            <div class="card-link-row">
+              <a href="contact.html" class="card-action">Enquire now <i class="ph ph-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="space-card reveal">
+          <div class="space-card-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+              alt="Coworking space" loading="lazy">
+            <span class="space-card-tag">For Teams</span>
+          </div>
+          <div class="space-card-body">
+            <div class="space-card-icon"><i class="ph ph-users-three"></i></div>
+            <h3>Coworking Spaces</h3>
+            <p>Vibrant open-plan environments designed for collaboration. Perfect for freelancers and agile, growing
+              teams.</p>
+            <div class="card-link-row">
+              <a href="contact.html" class="card-action">Enquire now <i class="ph ph-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="space-card reveal">
+          <div class="space-card-image">
+            <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?auto=format&fit=crop&q=80&w=800"
+              alt="Professional meeting room" loading="lazy">
+            <span class="space-card-tag">On Demand</span>
+          </div>
+          <div class="space-card-body">
+            <div class="space-card-icon"><i class="ph ph-presentation-chart"></i></div>
+            <h3>Meeting Rooms</h3>
+            <p>Professional, tech-enabled conference rooms for board meetings, client presentations, and team strategy
+              sessions.</p>
+            <div class="card-link-row">
+              <a href="contact.html" class="card-action">Enquire now <i class="ph ph-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / WHY US -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="features-layout">
+        <div class="features-left">
+          <span class="section-eyebrow reveal" style="color: rgba(212,168,83,0.7);">Why CityHub</span>
+          <h2 class="section-title reveal">Designed for<br><em
+              style="color:var(--gold); font-style:italic;">Productivity</em><br>and Growth</h2>
+          <p class="section-desc reveal">A leasing experience that's as premium as the spaces themselves â€” from first
+            call to move-in day.</p>
+
+          <div class="feature-list">
+            <div class="feature-item reveal">
+              <div class="feature-num">01</div>
+              <div class="feature-text">
+                <h4>Strategic Locations</h4>
+                <p>Situated inside prominent IT parks and commercial corridors across Mohali and Chandigarh's Tricity
+                  belt.</p>
+              </div>
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-num">02</div>
+              <div class="feature-text">
+                <h4>Flexible Lease Terms</h4>
+                <p>Scale up or right-size your footprint without friction â€” short and long-term agreements, tailored
+                  to
+                  your runway.</p>
+              </div>
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-num">03</div>
+              <div class="feature-text">
+                <h4>Plug &amp; Play Infrastructure</h4>
+                <p>High-speed fibre, power backup, ergonomic furnishings, HVAC, cafeteria access â€” all included from
+                  day
+                  one.</p>
+              </div>
+            </div>
+            <div class="feature-item reveal">
+              <div class="feature-num">04</div>
+              <div class="feature-text">
+                <h4>24 / 7 Access &amp; Security</h4>
+                <p>Biometric entry, CCTV monitoring, and round-the-clock access so your team can work on their own
+                  schedule.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="features-right reveal-right">
+          <div class="features-image-wrap">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=900"
+              alt="Modern collaborative office interior">
+            <div class="image-badge">
+              <div class="image-badge-num">100%</div>
+              <div class="image-badge-text">Plug &amp; Play Ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="section locations-section">
+    <div class="container">
+      <span class="section-eyebrow reveal">Our Locations</span>
+      <h2 class="section-title reveal">At the Heart of<br>Tricity's Business Districts</h2>
+
+      <div class="locations-grid">
+        <a href="office-space-mohali.html" class="location-card reveal-left">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=1000"
+            alt="Mohali IT Park office spaces" loading="lazy">
+          <div class="location-overlay"></div>
+          <div class="location-info">
+            <div class="location-tag">Punjab, India</div>
+            <div class="location-name">Mohali</div>
+            <div class="location-sub">Phase 8B Industrial Area &amp; IT Parks</div>
+          </div>
+          <div class="location-arrow"><i class="ph ph-arrow-up-right"></i></div>
+        </a>
+
+        <a href="office-space-chandigarh.html" class="location-card reveal-right">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000"
+            alt="Chandigarh commercial office spaces" loading="lazy">
+          <div class="location-overlay"></div>
+          <div class="location-info">
+            <div class="location-tag">UT, India</div>
+            <div class="location-name">Chandigarh</div>
+            <div class="location-sub">Sector 9, 17 &amp; Prime Commercial Zones</div>
+          </div>
+          <div class="location-arrow"><i class="ph ph-arrow-up-right"></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-left reveal-left">
+          <span class="section-eyebrow">FAQs</span>
+          <h2 class="section-title">Common<br>Questions</h2>
+          <p class="section-desc">Can't find an answer? Our team is ready to walk you through everything.</p>
+          <a href="contact.html" class="faq-cta-link">
+            <i class="ph ph-chat-circle-text"></i>
+            Talk to us directly
+          </a>
+        </div>
+
+        <div class="faq-list reveal-right" id="faqList">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-q-text">What types of office spaces do you offer?</span>
+              <div class="faq-toggle"><i class="ph ph-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>We offer a full range of workspaces: private custom-fitted offices, dedicated coworking desks, hot
+                  desks, fully furnished suites, warehouses, and premium showrooms â€” tailored to your exact
+                  requirements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-q-text">Are your spaces suitable for early-stage startups?</span>
+              <div class="faq-toggle"><i class="ph ph-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Absolutely. We offer highly flexible, budget-conscious layouts built for startups. Our terms let you
+                  start small and scale your footprint smoothly as your team grows â€” no rigid long-term lock-ins
+                  required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-q-text">Are the offices fully furnished?</span>
+              <div class="faq-toggle"><i class="ph ph-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Yes â€” all spaces are plug-and-play on day one. Ergonomic desks, quality seating, ambient lighting,
+                  high-speed internet, HVAC, and power backup are standard in every unit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-q-text">What is the minimum lease duration?</span>
+              <div class="faq-toggle"><i class="ph ph-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>We offer monthly, quarterly, and annual lease options. Contact our team for current availability and
+                  the most flexible terms for your situation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-q-text">How do I schedule a site visit?</span>
+              <div class="faq-toggle"><i class="ph ph-plus"></i></div>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Simply reach us at +91 76965 10579 or fill out the contact form. We'll arrange a personalized
+                  walkthrough at your preferred time â€” typically within 24 hours of your enquiry.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <div class="cta-text">
+          <h2>Your next office is<br>waiting for you <em>today</em></h2>
+          <p>Join businesses that chose CityHub and never looked back. Schedule a personalised site visit â€” no
+            pressure,
+            no obligation.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-gold">
+            Book a Site Visit <i class="ph ph-arrow-right"></i>
+          </a>
+          <a href="tel:+917696510579" class="btn-text-link">
+            <i class="ph ph-phone-call"></i> Call us now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">CityHub<div class="logo-dot"></div></a>
+        <p>Premium workspace solutions in Mohali and Chandigarh â€” connecting ambitious businesses to the spaces they
+          deserve.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/cityhub_leasing" target="_blank" class="social-btn" aria-label="Instagram">
+            <i class="ph-fill ph-instagram-logo"></i>
+          </a>
+          <a href="office-space-mohali.html" class="social-btn" aria-label="Office spaces">
+            <i class="ph-fill ph-buildings"></i>
+          </a>
+          <a href="warehouse-for-rent.html" class="social-btn" aria-label="Warehouses">
+            <i class="ph-fill ph-warehouse"></i>
+          </a>
+          <a href="showroom-for-rent.html" class="social-btn" aria-label="Showrooms">
+            <i class="ph-fill ph-storefront"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="adminLogin.html">Admin Login</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Spaces</h5>
+        <ul>
+          <li><a href="office-space-mohali.html">Offices in Mohali</a></li>
+          <li><a href="office-space-chandigarh.html">Offices in Chandigarh</a></li>
+          <li><a href="warehouse-for-rent.html">Warehouses</a></li>
+          <li><a href="showroom-for-rent.html">Showrooms</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="footer-contact-item">
+          <i class="ph-fill ph-map-pin"></i>
+          <span>Phase 8b, Industrial Area, Sec-74, Mohali</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph-fill ph-phone-call"></i>
+          <span>+91 76965 10579</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph-fill ph-envelope-simple"></i>
+          <span>cityhub.leasing@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 CityHub Leasing. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* =============================================
+       TICKER POPULATE
+    ============================================= */
+    const tickerItems = [
+      'Private Offices', 'Coworking Spaces', 'Meeting Rooms',
+      'Warehouses', 'Showrooms', 'Mohali IT Park',
+      'Chandigarh Sector 9', 'Plug & Play Ready', 'Flexible Leases'
+    ];
+    const track = document.getElementById('tickerTrack');
+    const doubled = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
+    doubled.forEach(item => {
+      const el = document.createElement('span');
+      el.className = 'ticker-item';
+      el.innerHTML = `${item}<span class="ticker-dot"></span>`;
+      track.appendChild(el);
+    });
+
+    /* =============================================
+       LOADER
+    ============================================= */
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      const bar = document.getElementById('loaderBar');
+      const loaderLogo = loader.querySelector('.loader-logo');
+
+      gsap.to(loaderLogo, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+      gsap.to(bar, {
+        width: '100%',
+        duration: 0.9,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          gsap.to(loader, {
+            opacity: 0,
+            duration: 0.5,
+            delay: 0.15,
+            ease: 'power2.in',
+            onComplete: () => { loader.style.display = 'none'; initAnimations(); }
+          });
+        }
+      });
+    });
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    const navbar = document.getElementById('navbar');
+    const hero = document.getElementById('hero');
+
+    const navObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          navbar.classList.add('hero-nav');
+          navbar.classList.remove('scrolled');
+        } else {
+          navbar.classList.remove('hero-nav');
+          navbar.classList.add('scrolled');
+        }
+      },
+      { rootMargin: '-80px 0px 0px 0px', threshold: 0 }
+    );
+    navObserver.observe(hero);
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      toggleIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+    });
+
+    // Mobile dropdown
+    const spacesDropdown = document.getElementById('spacesDropdown');
+    spacesDropdown.querySelector('.nav-trigger').addEventListener('click', e => {
+      if (window.innerWidth <= 768) {
+        e.stopPropagation();
+        spacesDropdown.classList.toggle('open');
+      }
+    });
+
+    /* =============================================
+       FAQ ACCORDION
+    ============================================= */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
+    /* =============================================
+       GSAP ANIMATIONS
+    ============================================= */
+    function initAnimations() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero parallax
+      gsap.to('#heroBg', {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      // Hero content stagger
+      const heroTl = gsap.timeline({ delay: 0.1 });
+      heroTl
+        .to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+        .to('.hero-headline', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
+        .to('.hero-actions', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.5')
+        .to('.hero-stats', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4');
+
+      // Scroll reveals
+      gsap.utils.toArray('.reveal').forEach((el, i) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 48 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            },
+            delay: (i % 4) * 0.08
+          }
+        );
+      });
+
+      gsap.utils.toArray('.reveal-left').forEach(el => {
+        gsap.fromTo(el,
+          { opacity: 0, x: -48 },
+          {
+            opacity: 1, x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      gsap.utils.toArray('.reveal-right').forEach(el => {
+        gsap.fromTo(el,
+          { opacity: 0, x: 48 },
+          {
+            opacity: 1, x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Space cards stagger
+      gsap.utils.toArray('.space-card').forEach((card, i) => {
+        gsap.fromTo(card,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            delay: i * 0.12,
+            scrollTrigger: {
+              trigger: '.spaces-grid',
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // Feature items stagger
+      gsap.utils.toArray('.feature-item').forEach((item, i) => {
+        gsap.fromTo(item,
+          { opacity: 0, x: -24 },
+          {
+            opacity: 1, x: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+            delay: i * 0.1,
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 88%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // FAQ items
+      gsap.utils.toArray('.faq-item').forEach((item, i) => {
+        gsap.fromTo(item,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            delay: i * 0.07,
+            scrollTrigger: {
+              trigger: '#faqList',
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // CTA block
+      gsap.fromTo('.cta-block',
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: '.cta-block', start: 'top 88%' }
+        }
+      );
+
+      // Magnetic buttons (desktop only)
+      if (window.innerWidth > 768) {
+        document.querySelectorAll('.btn-primary, .btn-gold, .nav-cta').forEach(btn => {
+          btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.18, y: y * 0.18, duration: 0.3, ease: 'power2.out' });
+          });
+          btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+          });
+        });
+      }
+    }
+
+    /* =============================================
+       SECURITY
+    ============================================= */
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', function (e) {
+      if (e.ctrlKey && ['u', 's', 'i', 'c', 'x'].includes(e.key.toLowerCase())) e.preventDefault();
+    });
+  </script>
+
+</body>
+
+</html>

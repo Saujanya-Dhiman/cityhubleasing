@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cityhubleasing.netlify.app/sitemap.xml

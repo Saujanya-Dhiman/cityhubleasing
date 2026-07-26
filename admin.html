@@ -1,0 +1,1392 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9M2WH6F9C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-D9M2WH6F9C');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Favicon / Logo for Tabs and Google Search -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%232563EB' d='M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-16-16H32A16,16,0,0,0,16,32V208H8a8,8,0,0,0,0,16H248a8,8,0,0,0,0-16ZM32,32H128a8,8,0,0,1,8,8V208H32ZM208,208H160V96h48Z'/%3E%3Crect x='48' y='64' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='64' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='48' y='112' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='112' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='48' y='160' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='160' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='176' y='128' width='16' height='16' rx='4' fill='%232563EB'/%3E%3Crect x='176' y='168' width='16' height='16' rx='4' fill='%232563EB'/%3E%3C/svg%3E">
+  <title>CityHub Admin Dashboard</title>
+
+  <!-- Fonts: matches the CityHub premium design system (Playfair Display / DM Sans / DM Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+  <!-- jQuery & DataTables -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+  <style>
+    /* ================= DESIGN TOKENS (CityHub premium system) ================= */
+    :root {
+      --primary: #0A0A0F;
+      --accent: #D4A853;
+      --accent-lt: #E8C47A;
+      --accent-dk: #B8863A;
+      --bg: #F7F6F3;
+      --surface: #FFFFFF;
+      --text: #55524B;
+      --border: rgba(10, 10, 15, 0.09);
+      --border-dk: rgba(10, 10, 15, 0.14);
+      --danger: #D9534F;
+      --danger-bg: #FCEEED;
+      --success: #10B981;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 16px -6px rgba(10, 10, 15, 0.08);
+      --shadow-md: 0 20px 45px -16px rgba(10, 10, 15, 0.16);
+      --shadow-lg: 0 32px 70px -18px rgba(10, 10, 15, 0.22);
+      --f-display: 'Playfair Display', Georgia, serif;
+      --f-body: 'DM Sans', system-ui, sans-serif;
+      --f-mono: 'DM Mono', monospace;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.3s var(--ease-out-expo);
+    }
+
+    /* ================= PREMIUM UI POLISH & SCROLLBAR ================= */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #D8D3C8;
+      border-radius: 10px;
+      border: 2px solid var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    ::selection {
+      background: rgba(212, 168, 83, 0.25);
+      color: var(--accent-dk);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--f-body);
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--f-display);
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    /* ================= 3D ENTRANCE KEYFRAMES ================= */
+    @keyframes sidebarIn {
+      from { opacity: 0; transform: perspective(1200px) rotateY(10deg) translateX(-32px); }
+      to { opacity: 1; transform: perspective(1200px) rotateY(0deg) translateX(0); }
+    }
+
+    @keyframes headerIn {
+      from { opacity: 0; transform: translateY(-14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin3d {
+      0% { transform: perspective(140px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+      50% { transform: perspective(140px) rotateX(180deg) rotateY(180deg) rotateZ(180deg); }
+      100% { transform: perspective(140px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: perspective(1200px) rotateX(-14deg) scale(0.94) translateY(10px); }
+      to { opacity: 1; transform: perspective(1200px) rotateX(0deg) scale(1) translateY(0); }
+    }
+
+    /* LAYOUT: Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 50;
+      animation: sidebarIn 0.65s var(--ease-out-expo) both;
+      transform-style: preserve-3d;
+    }
+
+    .brand {
+      font-family: var(--f-display);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 46px;
+      letter-spacing: -0.3px;
+    }
+
+    .brand i {
+      color: var(--accent);
+      font-size: 26px;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .brand:hover i {
+      transform: perspective(300px) rotateY(18deg) scale(1.08);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      color: #8B8578;
+      font-weight: 500;
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.3s var(--ease-out-expo);
+      text-decoration: none;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--accent-dk);
+      transform: perspective(500px) translateZ(4px) translateX(3px);
+    }
+
+    .nav-item i {
+      font-size: 19px;
+      transition: transform 0.35s var(--ease-out-expo);
+    }
+
+    .nav-item:hover i {
+      transform: perspective(300px) rotateY(16deg) scale(1.12);
+    }
+
+    .logout-btn {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      color: var(--danger);
+      background: var(--danger-bg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      font-size: 14.5px;
+    }
+
+    .logout-btn:hover {
+      background: var(--danger);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(217, 83, 79, 0.28);
+    }
+
+    /* LAYOUT: Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 260px;
+      padding: 40px;
+      max-width: calc(100vw - 260px);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      animation: headerIn 0.6s var(--ease-out-expo) both;
+      animation-delay: 0.1s;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .card-title {
+      font-size: 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+    }
+
+    .card-title i {
+      color: var(--accent-dk);
+    }
+
+    /* FORMS */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-family: var(--f-body);
+      font-size: 14px;
+      color: var(--text);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.16);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* File uploader styling */
+    .file-upload-wrapper {
+      position: relative;
+      border: 2px dashed var(--border-dk);
+      border-radius: var(--radius-sm);
+      padding: 40px 20px;
+      text-align: center;
+      background: var(--bg);
+      transition: border-color 0.3s, background 0.3s;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .file-upload-wrapper:hover {
+      border-color: var(--accent);
+      background: rgba(212, 168, 83, 0.06);
+    }
+
+    .file-upload-wrapper input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-upload-info i {
+      font-size: 32px;
+      color: var(--accent-dk);
+      margin-bottom: 10px;
+      display: inline-block;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .file-upload-wrapper:hover .file-upload-info i {
+      transform: perspective(300px) rotateX(14deg) translateY(-3px);
+    }
+
+    .file-upload-info h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .file-upload-info p {
+      font-size: 13px;
+      color: #928C7E;
+    }
+
+    .selected-files {
+      margin-top: 15px;
+      font-size: 13px;
+      color: var(--accent-dk);
+      font-weight: 600;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 99px;
+      font-size: 14.5px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s, background 0.25s;
+      font-family: var(--f-body);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(212, 168, 83, 0.35);
+    }
+
+    .btn-primary:active {
+      transform: perspective(300px) rotateX(8deg) scale(0.96);
+    }
+
+    .btn-secondary {
+      background: var(--border);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border-dk);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+      transform: perspective(300px) rotateX(8deg) scale(0.96);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+
+    /* DATATABLES CUSTOMIZATION */
+    .dataTables_wrapper .dataTables_length select,
+    .dataTables_wrapper .dataTables_filter input {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      outline: none;
+      background: var(--surface);
+      font-family: var(--f-body);
+    }
+
+    .dataTables_wrapper .dataTables_filter input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.14);
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      border-radius: var(--radius-sm) !important;
+      padding: 6px 12px !important;
+      margin-left: 4px !important;
+      border: 1px solid transparent !important;
+      color: var(--text) !important;
+      transition: var(--transition);
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      background: var(--accent) !important;
+      color: var(--primary) !important;
+      border: 1px solid var(--accent) !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background: rgba(212, 168, 83, 0.12) !important;
+      color: var(--accent-dk) !important;
+      border: 1px solid transparent !important;
+    }
+
+    table.dataTable.no-footer {
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.dataTable thead th {
+      border-bottom: 2px solid var(--border);
+      font-family: var(--f-display);
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    table.dataTable tbody td {
+      border-bottom: 1px solid #F0EEE8;
+      vertical-align: middle;
+      padding: 15px 10px;
+    }
+
+    table.dataTable tbody tr {
+      transition: background 0.2s;
+    }
+
+    table.dataTable tbody tr:hover {
+      background-color: var(--bg);
+    }
+
+    .thumbnail {
+      width: 70px;
+      height: 50px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      border: 1px solid var(--border);
+      transition: transform 0.3s var(--ease-out-expo);
+    }
+
+    table.dataTable tbody tr:hover .thumbnail {
+      transform: scale(1.06);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--accent-dk);
+      letter-spacing: 0.02em;
+    }
+
+    .badge.warehouse {
+      background: rgba(176, 111, 197, 0.14);
+      color: #8B4FA6;
+    }
+
+    .badge.showroom {
+      background: rgba(217, 119, 6, 0.12);
+      color: #B8630A;
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      transition: 0.25s var(--ease-out-expo);
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    .btn-edit {
+      background: rgba(212, 168, 83, 0.12);
+      color: var(--accent-dk);
+    }
+
+    .btn-edit:hover {
+      background: var(--accent);
+      color: var(--primary);
+      transform: perspective(300px) rotateY(12deg) translateY(-2px);
+    }
+
+    .btn-delete {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .btn-delete:hover {
+      background: var(--danger);
+      color: #fff;
+      transform: perspective(300px) rotateY(-12deg) translateY(-2px);
+    }
+
+
+    /* LOADING OVERLAY */
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(247, 246, 243, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .spinner {
+      font-size: 40px;
+      color: var(--accent);
+      animation: spin3d 1.3s linear infinite;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.35s var(--ease-out-expo);
+        animation: none;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .main-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 20px;
+      }
+
+      .mobile-toggle {
+        display: block !important;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 10px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+      }
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 15, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      animation: modalIn 0.4s var(--ease-out-expo);
+      transform-style: preserve-3d;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-header {
+      padding: 20px 30px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      padding: 20px 30px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .close-modal {
+      cursor: pointer;
+      font-size: 24px;
+      color: #A8A296;
+      transition: 0.25s var(--ease-out-expo);
+    }
+
+    .close-modal:hover {
+      color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <!-- RESPONSIVE FIXES -->
+  <style>
+    /* Prevent horizontal scrolling globally */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img, video, iframe {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Fix navigation & dropdown flickering */
+    @media (max-width: 768px) {
+      .nav-links {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        padding-bottom: 40px !important; /* Touch friendly bottom space */
+        overflow-y: auto !important;
+      }
+
+      .dropdown-panel, .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        display: none !important;
+        flex-direction: column !important;
+        margin-top: 8px !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      .dropdown.open .dropdown-panel,
+      .dropdown.active .dropdown-menu,
+      .dropdown-menu.show {
+        display: flex !important;
+      }
+
+      .dropdown-panel a, .dropdown-menu a {
+        justify-content: flex-start !important;
+        padding: 14px 16px !important; /* Larger touch targets */
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+      }
+
+      /* Fix overlapping and grid layouts on mobile */
+      .spaces-grid, .locations-grid, .admin-grid, .features-layout, .footer-top {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-inner, .section, .container {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+      
+      .cta-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      
+      .btn-primary, .btn-ghost {
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 16px !important;
+      }
+      
+      .hero-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }
+  </style>
+  <!-- HAMBURGER MENU FIX -->
+  <style>
+    @media (max-width: 768px) {
+      /* Fix containing block issue and background */
+      .nav-links {
+        position: fixed !important;
+        top: 76px !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100vh - 76px) !important;
+        height: calc(100dvh - 76px) !important;
+        background: rgba(10, 10, 15, 0.98) !important;
+        bottom: auto !important;
+        right: auto !important;
+        padding-top: 32px !important;
+      }
+      
+      /* Fix text color in scrolled state so it's readable on dark background */
+      nav.scrolled .nav-links > a, 
+      nav.scrolled .dropdown > .nav-trigger {
+        color: rgba(255, 255, 255, 0.85) !important;
+      }
+      nav.scrolled .nav-links > a:hover, 
+      nav.scrolled .dropdown > .nav-trigger:hover {
+        color: var(--gold) !important;
+      }
+      
+      /* Ensure dropdown links are readable */
+      .dropdown-panel a, .dropdown-menu a {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
+      .dropdown-panel a:hover, .dropdown-panel a.active-link,
+      .dropdown-menu a:hover, .dropdown-menu a.active-link {
+        color: var(--gold) !important;
+        background: rgba(212, 168, 83, 0.12) !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay">
+    <i class="ph ph-spinner spinner"></i>
+    <h3 id="loadingText">Processing...</h3>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <i class="ph-fill ph-buildings"></i> CityHub Admin
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="#" class="nav-item active"><i class="ph-fill ph-squares-four"></i> Dashboard</a></li>
+      <li><a href="index.html" class="nav-item"><i class="ph-fill ph-globe"></i> View Website</a></li>
+    </ul>
+
+    <button class="logout-btn" onclick="logoutAdmin()">
+      <i class="ph-bold ph-sign-out"></i> Sign Out
+    </button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="header">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <button class="mobile-toggle" onclick="toggleSidebar()"><i class="ph ph-list"
+            style="font-size: 24px;"></i></button>
+        <h1>Property Management</h1>
+      </div>
+    </div>
+
+    <!-- Upload Form Card -->
+    <div class="card">
+      <h2 class="card-title"><i class="ph-fill ph-plus-circle"></i> Add New Property</h2>
+
+      <form id="uploadForm" onsubmit="uploadData(event)">
+        <div class="form-grid" style="display: block;">
+          <div class="form-group full-width">
+            <label class="form-label">Property Images (Max 10)</label>
+            <div class="file-upload-wrapper">
+              <input type="file" id="images" multiple accept="image/*" onchange="handleImageSelection(event)">
+              <div class="file-upload-info">
+                <i class="ph ph-upload-simple"></i>
+                <h4>Click or drag images to upload</h4>
+                <p>Support JPG, PNG, WEBP (Max 10 files)</p>
+                <div id="fileCount" class="selected-files">0 files selected</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="imageMetadataContainer" class="form-group full-width" style="display: none; margin-top: 20px;">
+            <h3
+              style="font-size: 16px; margin-bottom: 20px; color: var(--primary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <i class="ph-bold ph-images"></i> Listing Details
+              <div style="margin-left: auto; display: flex; gap: 5px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary" style="padding: 6px 10px; font-size: 11px;"
+                  onclick="copyToAll('meta-title')">Title to All</button>
+                <button type="button" class="btn btn-secondary" style="padding: 6px 10px; font-size: 11px;"
+                  onclick="copyToAll('meta-category')">Cat to All</button>
+                <button type="button" class="btn btn-secondary" style="padding: 6px 10px; font-size: 11px;"
+                  onclick="copyToAll('meta-location')">Loc to All</button>
+                <button type="button" class="btn btn-secondary" style="padding: 6px 10px; font-size: 11px;"
+                  onclick="copyToAll('meta-description')">Desc to All</button>
+              </div>
+            </h3>
+            <div id="metadataCards"
+              style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px;">
+              <!-- Dynamic cards will appear here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn btn-secondary" onclick="resetUploadForm()">Clear</button>
+          <button type="submit" class="btn btn-primary"><i class="ph-bold ph-upload"></i> Publish Listing</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- DataTable Card -->
+    <div class="card">
+      <h2 class="card-title"><i class="ph-fill ph-list-dashes"></i> Existing Listings</h2>
+      <div class="table-responsive" style="overflow-x: auto;">
+        <table id="listingsTable" class="display" style="width:100%">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Date Added</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="ph-fill ph-pencil-simple"></i> Edit Listing</h2>
+        <i class="ph ph-x close-modal" onclick="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form id="editForm">
+          <input type="hidden" id="edit-id">
+
+          <div class="form-group">
+            <label class="form-label">Property Title</label>
+            <input type="text" id="edit-title" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="edit-category" class="form-control" required>
+              <option value="Mohali Offices">Mohali Offices</option>
+              <option value="Chandigarh Offices">Chandigarh Offices</option>
+              <option value="Showroom">Showrooms</option>
+              <option value="Warehouse">Warehouses</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" id="edit-location" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="edit-description" class="form-control" style="min-height: 100px;" required></textarea>
+          </div>
+
+          <p style="font-size: 13px; color: #928C7E;">*Image editing is currently not supported via this modal. Delete
+            and re-upload to change images.</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEdit()"><i class="ph ph-check-circle"></i> Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Firebase & Scripts (LOGIC UNCHANGED â€” copied verbatim) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signOut, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAUI6xoxsREuNJ1XXd7VS1GD0vC0iUYynY",
+      authDomain: "cityhubadmin.firebaseapp.com",
+      projectId: "cityhubadmin",
+      storageBucket: "cityhubadmin.firebasestorage.app",
+      messagingSenderId: "347595626474",
+      appId: "1:347595626474:web:33e5dfed12d586f88e4493",
+      measurementId: "G-D9M2WH6F9C"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // // Optional Auth Redirect Protection
+    // onAuthStateChanged(auth, (user) => {
+    //   if (!user) { window.location.href = "adminLogin.html"; }
+    // });
+
+    window.logoutAdmin = async function () {
+      await signOut(auth);
+      window.location.href = "adminLogin.html";
+    }
+
+    // Toggle Sidebar Mobile
+    window.toggleSidebar = function () {
+      document.querySelector('.sidebar').classList.toggle('open');
+    }
+
+    // Update Image Selection and Metadata Cards
+    window.resetUploadForm = function () {
+      document.getElementById('uploadForm').reset();
+      document.getElementById('fileCount').innerText = '0 files selected';
+      document.getElementById('imageMetadataContainer').style.display = 'none';
+      document.getElementById('metadataCards').innerHTML = "";
+    }
+
+    window.handleImageSelection = function (e) {
+      const files = e.target.files;
+      const fileCountDisplay = document.getElementById('fileCount');
+      const container = document.getElementById('imageMetadataContainer');
+      const cardsGrid = document.getElementById('metadataCards');
+
+      fileCountDisplay.innerText = `${files.length} file(s) selected`;
+
+      if (files.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      if (files.length > 10) {
+        alert("Maximum 10 images allowed.");
+        e.target.value = "";
+        fileCountDisplay.innerText = "0 files selected";
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      cardsGrid.innerHTML = "";
+
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const card = document.createElement('div');
+          card.style.cssText = "background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--shadow-sm);";
+          card.innerHTML = `
+            <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+              <img src="${event.target.result}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
+              <div style="overflow: hidden;">
+                <p style="font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${file.name}</p>
+                <p style="font-size: 10px; color: #64748B;">Listing ${index + 1}</p>
+              </div>
+            </div>
+            
+            <div>
+              <label class="form-label" style="font-size: 11px;">Property Title</label>
+              <input type="text" class="form-control meta-title" placeholder="Title" style="padding: 8px; font-size: 12px;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div>
+                <label class="form-label" style="font-size: 11px;">Category</label>
+                <select class="form-control meta-category" style="padding: 8px; font-size: 12px;">
+                  <option value="Mohali Offices">Mohali Offices</option>
+                  <option value="Chandigarh Offices">Chandigarh Offices</option>
+                  <option value="Showroom">Showrooms</option>
+                  <option value="Warehouse">Warehouses</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" style="font-size: 11px;">Location</label>
+                <input type="text" class="form-control meta-location" placeholder="Industrial Area" style="padding: 8px; font-size: 12px;">
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label" style="font-size: 11px;">Individual Description</label>
+              <textarea class="form-control meta-description" placeholder="Description..." style="min-height: 60px; padding: 8px; font-size: 12px;"></textarea>
+            </div>
+          `;
+          cardsGrid.appendChild(card);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    window.copyToAll = function (className) {
+      const firstVal = document.querySelector(`.${className}`)?.value;
+      if (firstVal !== undefined) {
+        document.querySelectorAll(`.${className}`).forEach(el => el.value = firstVal);
+      }
+    }
+
+    window.updateFileCount = function (inputId, textId) {
+      const input = document.getElementById(inputId);
+      const text = document.getElementById(textId);
+      text.innerText = `${input.files.length} file(s) selected`;
+    }
+
+    function showLoading(text) {
+      document.getElementById('loadingText').innerText = text;
+      document.getElementById('loadingOverlay').style.display = 'flex';
+    }
+
+    function hideLoading() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+
+    // CREATE (Upload Data & Multiple Images with Individual Metadata)
+    window.uploadData = async function (e) {
+      e.preventDefault();
+
+      const files = document.getElementById("images").files;
+      if (files.length === 0) { alert("Please select at least 1 image"); return; }
+      if (files.length > 10) { alert("Maximum 10 images allowed."); return; }
+
+      const metadataCards = document.querySelectorAll('#metadataCards > div');
+      const uploadDataArray = [];
+
+      let hasError = false;
+      metadataCards.forEach((card, index) => {
+        const title = card.querySelector('.meta-title').value.trim();
+        const description = card.querySelector('.meta-description').value.trim();
+        const category = card.querySelector('.meta-category').value;
+        const location = card.querySelector('.meta-location').value.trim();
+
+        if (!title || !description || !location) hasError = true;
+
+        uploadDataArray.push({
+          file: files[index],
+          title,
+          description,
+          category,
+          location
+        });
+      });
+
+      if (hasError) {
+        alert("Please fill all details for all images. You can use 'Copy to All' buttons for speed.");
+        return;
+      }
+
+      showLoading("Starting Bulk Upload...");
+
+      try {
+        // Map over each image and its specific metadata
+        const uploadPromises = uploadDataArray.map(async (item) => {
+          const formData = new FormData();
+          formData.append("file", item.file);
+          formData.append("upload_preset", "cityhubUpload");
+
+          try {
+            const res = await fetch("https://api.cloudinary.com/v1_1/dqferauki/image/upload", {
+              method: "POST", body: formData
+            });
+            if (!res.ok) throw new Error("Cloudinary upload failed");
+            const data = await res.json();
+
+            // For each successfully uploaded image, create a separate Firestore document
+            await addDoc(collection(db, "listings"), {
+              title: item.title,
+              description: item.description,
+              category: item.category,
+              location: item.location,
+              images: [data.secure_url],
+              imageUrl: data.secure_url,
+              createdAt: serverTimestamp()
+            });
+
+            return true;
+          } catch (err) {
+            console.error("Error processing image upload:", err);
+            return false;
+          }
+        });
+
+        const results = await Promise.all(uploadPromises);
+        const successCount = results.filter(r => r === true).length;
+
+        hideLoading();
+        if (successCount > 0) {
+          alert(`Successfully uploaded ${successCount} listing(s)!`);
+          resetUploadForm();
+          loadListings();
+        } else {
+          alert("Failed to upload images. Please check your network or configuration.");
+        }
+
+      } catch (error) {
+        hideLoading();
+        console.error(error);
+        alert("An error occurred during upload.");
+      }
+    }
+
+    let rawListings = {}; // cache for edit modal
+
+    // READ (Load DataTable)
+    async function loadListings() {
+      try {
+        const q = query(collection(db, "listings"), orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        // Destroy existing datatable instance if exists before redrawing
+        if ($.fn.DataTable.isDataTable('#listingsTable')) {
+          $('#listingsTable').DataTable().destroy();
+        }
+
+        const tbody = document.querySelector("#listingsTable tbody");
+        tbody.innerHTML = "";
+        rawListings = {};
+
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const id = docSnap.id;
+          rawListings[id] = data;
+
+          let dateStr = "N/A";
+          if (data.createdAt) {
+            dateStr = new Intl.DateTimeFormat('en-IN', {
+              day: '2-digit', month: 'short', year: 'numeric',
+              hour: '2-digit', minute: '2-digit'
+            }).format(data.createdAt.toDate());
+          }
+
+          let thumbnail = "https://via.placeholder.com/150";
+          if (data.images && data.images.length > 0) thumbnail = data.images[0];
+          else if (data.imageUrl) thumbnail = data.imageUrl;
+
+          let badgeClass = "";
+          if (data.category.toLowerCase().includes('warehouse')) badgeClass = "warehouse";
+          else if (data.category.toLowerCase().includes('showroom')) badgeClass = "showroom";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><img src="${thumbnail}" class="thumbnail" alt="Thumb"></td>
+            <td style="font-weight: 500; color: var(--primary);">${data.title}</td>
+            <td><span class="badge ${badgeClass}">${data.category}</span></td>
+            <td>${data.location || "N/A"}</td>
+            <td style="color:#64748B; font-size:13px;">${dateStr}</td>
+            <td>
+              <button class="btn-icon btn-edit" title="Edit" onclick="openEditModal('${id}')"><i class="ph-bold ph-pencil-simple"></i></button>
+              <button class="btn-icon btn-delete" title="Delete" onclick="deleteListing('${id}')"><i class="ph-bold ph-trash"></i></button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // Initialize DataTable
+        $('#listingsTable').DataTable({
+          "pageLength": 10,
+          "language": {
+            "search": "",
+            "searchPlaceholder": "Search listings..."
+          },
+          "responsive": true,
+          "order": [] // disable initial sort because we already sorted from Firebase
+        });
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    // UPDATE Modal Logic
+    window.openEditModal = function (id) {
+      const data = rawListings[id];
+      if (!data) return;
+
+      document.getElementById("edit-id").value = id;
+      document.getElementById("edit-title").value = data.title;
+      document.getElementById("edit-category").value = data.category;
+      document.getElementById("edit-location").value = data.location || "";
+      document.getElementById("edit-description").value = data.description;
+
+      document.getElementById("editModal").classList.add("active");
+    }
+
+    window.closeModal = function () {
+      document.getElementById("editModal").classList.remove("active");
+    }
+
+    window.saveEdit = async function () {
+      const id = document.getElementById("edit-id").value;
+      const title = document.getElementById("edit-title").value.trim();
+      const category = document.getElementById("edit-category").value;
+      const location = document.getElementById("edit-location").value.trim();
+      const description = document.getElementById("edit-description").value.trim();
+
+      if (!title || !location || !description) {
+        alert("Please fill all fields."); return;
+      }
+
+      showLoading("Updating...");
+      try {
+        await updateDoc(doc(db, "listings", id), {
+          title, category, location, description
+        });
+        hideLoading();
+        closeModal();
+        loadListings();
+      } catch (error) {
+        hideLoading();
+        console.error(error);
+        alert("Update failed.");
+      }
+    }
+
+    // DELETE Logic
+    window.deleteListing = async function (id) {
+      if (confirm("Are you sure you want to delete this listing? This action cannot be undone.")) {
+        showLoading("Deleting...");
+        try {
+          await deleteDoc(doc(db, "listings", id));
+          hideLoading();
+          loadListings();
+        } catch (error) {
+          hideLoading();
+          console.error(error);
+          alert("Delete failed.");
+        }
+      }
+    }
+
+    // Initial Load
+    loadListings();
+
+  </script>
+
+  <!-- 3D INTERACTION LAYER (ADDITIVE â€” DESIGN ONLY, no business logic touched) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tiltEls = document.querySelectorAll('.card, .file-upload-wrapper');
+
+      // Entrance: quick 3D fade/tilt-in, staggered per element
+      tiltEls.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'perspective(1000px) rotateX(6deg) translateY(20px)';
+        el.style.transition = 'opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+        window.setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'perspective(1000px) rotateX(0deg) translateY(0)';
+        }, 120 + i * 90);
+      });
+
+      // After entrance settles, switch to a snappier transition and enable pointer-tracked tilt
+      window.setTimeout(() => {
+        tiltEls.forEach((el) => {
+          el.style.transition = 'transform 0.15s ease-out';
+
+          if (window.innerWidth > 900 && window.matchMedia('(pointer: fine)').matches) {
+            el.addEventListener('mousemove', (e) => {
+              const rect = el.getBoundingClientRect();
+              const relX = (e.clientX - rect.left) / rect.width;
+              const relY = (e.clientY - rect.top) / rect.height;
+              const rotateY = (relX - 0.5) * 5;
+              const rotateX = (0.5 - relY) * 5;
+              el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            el.addEventListener('mouseleave', () => {
+              el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+          }
+        });
+      }, 900);
+    });
+  </script>
+
+</body>
+
+</html>
+
+
