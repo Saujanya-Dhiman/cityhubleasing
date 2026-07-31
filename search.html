@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Search CityHub Leasing</title>
+  <link rel="canonical" href="https://cityhubleasing.netlify.app/search.html">
+  <style>body{font-family:system-ui,sans-serif;max-width:720px;margin:3rem auto;padding:0 1rem;color:#111}input{width:100%;padding:.8rem;font:inherit}button{margin-top:.75rem;padding:.7rem 1rem;font:inherit}li{margin:1rem 0}a{color:#73521c}</style>
+</head>
+<body>
+  <main>
+    <h1>Search CityHub Leasing</h1>
+    <form role="search" action="search.html" method="get"><label for="q">Search office, showroom, warehouse, Mohali, or Chandigarh</label><input id="q" name="q" type="search" required><button type="submit">Search</button></form>
+    <section aria-live="polite"><h2 id="resultHeading">Search results</h2><ul id="results"></ul></section>
+  </main>
+  <script>
+    const pages=[
+      ['Office Space in Mohali','office-space-mohali.html','private offices, coworking, furnished offices, Mohali'],
+      ['Office Space in Chandigarh','office-space-chandigarh.html','private offices, coworking, furnished offices, Chandigarh'],
+      ['Showrooms for Rent','showroom-for-rent.html','retail shops, showrooms, Mohali, Chandigarh'],
+      ['Warehouses for Rent','warehouse-for-rent.html','industrial storage, logistics, Mohali, Chandigarh'],
+      ['Contact CityHub Leasing','contact.html','contact, site visit, enquiry']
+    ];
+    const query=new URLSearchParams(location.search).get('q')||'';
+    document.getElementById('q').value=query;
+    const terms=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const matches=pages.filter(([, ,text])=>terms.every(term=>text.includes(term)));
+    document.getElementById('resultHeading').textContent=query?`Results for “${query}”`:'Search results';
+    document.getElementById('results').innerHTML=(matches.length?matches:pages).map(([name,url])=>`<li><a href="${url}">${name}</a></li>`).join('');
+  </script>
+</body>
+</html>

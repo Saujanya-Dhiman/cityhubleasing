@@ -14,6 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="CityHub Leasing administration dashboard.">
   <!-- Favicon / Logo for Tabs and Google Search -->
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%232563EB' d='M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-16-16H32A16,16,0,0,0,16,32V208H8a8,8,0,0,0,0,16H248a8,8,0,0,0,0-16ZM32,32H128a8,8,0,0,1,8,8V208H32ZM208,208H160V96h48Z'/%3E%3Crect x='48' y='64' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='64' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='48' y='112' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='112' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='48' y='160' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='88' y='160' width='24' height='24' rx='4' fill='%232563EB'/%3E%3Crect x='176' y='128' width='16' height='16' rx='4' fill='%232563EB'/%3E%3Crect x='176' y='168' width='16' height='16' rx='4' fill='%232563EB'/%3E%3C/svg%3E">
@@ -1063,7 +1064,7 @@
           card.style.cssText = "background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--shadow-sm);";
           card.innerHTML = `
             <div style="display: flex; gap: 10px; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-              <img src="${event.target.result}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
+              <img src="${event.target.result}" alt="Selected listing preview" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
               <div style="overflow: hidden;">
                 <p style="font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${file.name}</p>
                 <p style="font-size: 10px; color: #64748B;">Listing ${index + 1}</p>

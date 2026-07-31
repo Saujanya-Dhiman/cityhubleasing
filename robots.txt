@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://cityhubleasing.netlify.app/sitemap.xml
+
+Disallow: /admin.html
+Disallow: /adminLogin.html
