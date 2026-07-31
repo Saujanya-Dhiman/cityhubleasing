@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, follow">
   <title>Search CityHub Leasing</title>
   <link rel="canonical" href="https://cityhubleasing.netlify.app/search.html">
-    <link rel="stylesheet" href="assets/search.css">
+  <style>body{font-family:system-ui,sans-serif;max-width:720px;margin:3rem auto;padding:0 1rem;color:#111}input{width:100%;padding:.8rem;font:inherit}button{margin-top:.75rem;padding:.7rem 1rem;font:inherit}li{margin:1rem 0}a{color:#73521c}</style>
 </head>
 <body>
   <main>
@@ -26,9 +26,8 @@
     document.getElementById('q').value=query;
     const terms=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
     const matches=pages.filter(([, ,text])=>terms.every(term=>text.includes(term)));
-    document.getElementById('resultHeading').textContent=query?`Results for â€œ${query}â€`:'Search results';
+    document.getElementById('resultHeading').textContent=query?`Results for “${query}”`:'Search results';
     document.getElementById('results').innerHTML=(matches.length?matches:pages).map(([name,url])=>`<li><a href="${url}">${name}</a></li>`).join('');
   </script>
 </body>
 </html>
-
