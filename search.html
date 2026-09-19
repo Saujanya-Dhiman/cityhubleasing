@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add('gz-js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
   <title>Search CityHub Leasing</title>
   <link rel="canonical" href="https://cityhubleasing.netlify.app/search.html">
-  <style>body{font-family:system-ui,sans-serif;max-width:720px;margin:3rem auto;padding:0 1rem;color:#111}input{width:100%;padding:.8rem;font:inherit}button{margin-top:.75rem;padding:.7rem 1rem;font:inherit}li{margin:1rem 0}a{color:#73521c}</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/cityhub-2026.css">
+<script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+  <link rel="stylesheet" href="assets/css/genz-tokens.css">
+  <script defer src="assets/js/visibility-guard.js"></script>
+  <script defer src="assets/cityhub-2026.js"></script>
 </head>
 <body>
-  <main>
-    <h1>Search CityHub Leasing</h1>
-    <form role="search" action="search.html" method="get"><label for="q">Search office, showroom, warehouse, Mohali, or Chandigarh</label><input id="q" name="q" type="search" required><button type="submit">Search</button></form>
-    <section aria-live="polite"><h2 id="resultHeading">Search results</h2><ul id="results"></ul></section>
+  <main class="ch26-search">
+    <a class="brand" href="index.html">CityHub</a>
+    <h1>Search the Tricity inventory.</h1>
+    <p class="lede">Offices, coworking, meeting rooms, warehouses, and showrooms across Mohali and Chandigarh.</p>
+    <form class="ch26-search-form" role="search" action="search.html" method="get">
+      <div class="gz-field">
+        <input id="q" name="q" type="search" placeholder=" " required>
+        <label for="q">Search inventory</label>
+      </div>
+      <button type="submit">Search spaces</button>
+    </form>
+    <section aria-live="polite">
+      <h2 id="resultHeading">Search results</h2>
+      <ul id="results"></ul>
+    </section>
   </main>
   <script>
     const pages=[
@@ -29,5 +49,8 @@
     document.getElementById('resultHeading').textContent=query?`Results for “${query}”`:'Search results';
     document.getElementById('results').innerHTML=(matches.length?matches:pages).map(([name,url])=>`<li><a href="${url}">${name}</a></li>`).join('');
   </script>
+  <div id="aria-widget-root"></div>
+  <link rel="stylesheet" href="assets/css/chat-widget.css">
+  <script defer src="assets/js/chat-widget.js"></script>
 </body>
 </html>

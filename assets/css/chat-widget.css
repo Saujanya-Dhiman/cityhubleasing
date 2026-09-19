@@ -1,0 +1,334 @@
+.aria-root {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.aria-launcher-wrap {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 40;
+}
+
+.aria-launcher {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  min-width: 48px;
+  min-height: 48px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  background: radial-gradient(circle at 30% 25%, #a78bfa, #7c3aed 58%, #4c1d95);
+  box-shadow: 0 14px 36px rgba(124, 58, 237, 0.45), 0 0 0 6px rgba(124, 58, 237, 0.16);
+  display: grid;
+  place-items: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.aria-launcher:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.aria-launcher svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.aria-beacon {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccff00;
+  border: 2px solid #030305;
+}
+
+.aria-tooltip {
+  position: absolute;
+  right: 76px;
+  bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(13, 14, 21, 0.92);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.aria-launcher-wrap:hover .aria-tooltip,
+.aria-launcher-wrap:focus-within .aria-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.aria-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 96px;
+  z-index: 39;
+  width: min(360px, calc(100vw - 32px));
+  height: min(640px, calc(100dvh - 140px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgba(13, 14, 21, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 80px rgba(124, 58, 237, 0.28);
+  backdrop-filter: blur(16px) saturate(140%);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.92);
+  transform-origin: bottom right;
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.38s;
+}
+
+.aria-panel.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.aria-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aria-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 25%, #a78bfa, #7c3aed);
+  color: #fff;
+  font-weight: 800;
+}
+
+.aria-head h2 {
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  max-width: 200px;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.aria-head p {
+  margin: 2px 0 0;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.aria-verified {
+  display: inline-flex;
+  color: #67e8f9;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aria-tools {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.aria-tools button {
+  min-width: 48px;
+  min-height: 48px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  cursor: pointer;
+}
+
+.aria-thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aria-msg {
+  max-width: 88%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  animation: aria-slide 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes aria-slide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.aria-msg.bot {
+  align-self: flex-start;
+  background: rgba(124, 58, 237, 0.16);
+  border: 1px solid rgba(124, 58, 237, 0.28);
+  color: #fff;
+}
+
+.aria-msg.user {
+  align-self: flex-end;
+  background: #ccff00;
+  color: #000;
+  font-weight: 600;
+}
+
+.aria-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 14px 10px;
+}
+
+.aria-chips button {
+  border: 1px solid rgba(204, 255, 0, 0.28);
+  background: rgba(13, 14, 21, 0.7);
+  color: #fff;
+  border-radius: 999px;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.aria-chips button:hover {
+  background: #ccff00;
+  color: #000;
+  font-weight: 700;
+}
+
+.aria-loader {
+  display: none;
+  align-self: flex-start;
+  gap: 5px;
+  padding: 10px 12px;
+}
+
+.aria-loader.visible {
+  display: inline-flex;
+}
+
+.aria-loader span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7c3aed;
+  animation: aria-pulse 1s ease-in-out infinite;
+}
+
+.aria-loader span:nth-child(2) { animation-delay: 0.15s; }
+.aria-loader span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes aria-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.aria-lead {
+  align-self: stretch;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(13, 14, 21, 0.9);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+}
+
+.aria-lead h3 { margin: 0 0 4px; font-size: 14px; color: #fff; }
+.aria-lead p { margin: 0 0 10px; color: #94a3b8; font-size: 12px; }
+
+.aria-lead input {
+  width: 100%;
+  min-height: 48px;
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #030305;
+  color: #fff;
+}
+
+.aria-lead button {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: #ccff00;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aria-composer {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aria-composer input {
+  flex: 1;
+  min-height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(3, 3, 5, 0.8);
+  color: #fff;
+  border-radius: 12px;
+  padding: 11px 12px;
+}
+
+.aria-composer button {
+  border: 0;
+  border-radius: 999px;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 14px;
+  background: #ccff00;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aria-error { color: #f3c6c6; font-size: 12px; }
+
+@media (max-width: 640px) {
+  .aria-tooltip { display: none; }
+  .aria-panel {
+    right: 8px;
+    left: 8px;
+    width: auto;
+    bottom: 92px;
+    z-index: 39;
+  }
+  .aria-launcher-wrap { z-index: 40; bottom: 16px; }
+}
+.aria-composer input,.aria-lead input{font-size:16px}

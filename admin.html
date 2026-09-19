@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,6 +12,8 @@
     gtag('config', 'G-D9M2WH6F9C');
   </script>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add('gz-js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="CityHub Leasing administration dashboard.">
@@ -26,6 +28,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
@@ -39,16 +42,16 @@
     /* ================= DESIGN TOKENS (CityHub premium system) ================= */
     :root {
       --primary: #0A0A0F;
-      --accent: #D4A853;
-      --accent-lt: #E8C47A;
-      --accent-dk: #B8863A;
-      --bg: #F7F6F3;
-      --surface: #FFFFFF;
-      --text: #55524B;
-      --border: rgba(10, 10, 15, 0.09);
-      --border-dk: rgba(10, 10, 15, 0.14);
+      --accent: #CCFF00;
+      --accent-lt: #DFFF4F;
+      --accent-dk: #A3CC00;
+      --bg: #030305;
+      --surface: rgba(13,14,21,.88);
+      --text: #CBD5E1;
+      --border: rgba(255,255,255,.12);
+      --border-dk: rgba(255,255,255,.24);
       --danger: #D9534F;
-      --danger-bg: #FCEEED;
+      --danger-bg: rgba(255,107,107,.12);
       --success: #10B981;
       --radius-sm: 8px;
       --radius-md: 16px;
@@ -73,7 +76,7 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #D8D3C8;
+      background: rgba(255,255,255,.2);
       border-radius: 10px;
       border: 2px solid var(--bg);
     }
@@ -107,7 +110,7 @@
     h3,
     h4 {
       font-family: var(--f-display);
-      color: var(--primary);
+      color: var(--gz-text);
       letter-spacing: -0.3px;
     }
 
@@ -152,7 +155,7 @@
       font-family: var(--f-display);
       font-size: 21px;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--gz-text);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -183,7 +186,7 @@
       gap: 12px;
       padding: 14px 16px;
       border-radius: var(--radius-sm);
-      color: #8B8578;
+      color: var(--gz-text-2);
       font-weight: 500;
       font-size: 14.5px;
       cursor: pointer;
@@ -301,7 +304,7 @@
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 8px;
-      color: var(--primary);
+      color: var(--gz-text);
       letter-spacing: 0.01em;
     }
 
@@ -320,7 +323,7 @@
 
     .form-control:focus {
       border-color: var(--accent);
-      background: #fff;
+      background: var(--gz-surface-solid);
       box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.16);
     }
 
@@ -377,7 +380,7 @@
 
     .file-upload-info p {
       font-size: 13px;
-      color: #928C7E;
+      color:var(--gz-text-3);
     }
 
     .selected-files {
@@ -405,7 +408,7 @@
 
     .btn-primary {
       background: var(--accent);
-      color: var(--primary);
+      color: var(--gz-text);
     }
 
     .btn-primary:hover {
@@ -420,7 +423,7 @@
 
     .btn-secondary {
       background: var(--border);
-      color: var(--primary);
+      color: var(--gz-text);
     }
 
     .btn-secondary:hover {
@@ -467,7 +470,7 @@
     .dataTables_wrapper .dataTables_paginate .paginate_button.current,
     .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
       background: var(--accent) !important;
-      color: var(--primary) !important;
+      color: var(--gz-text) !important;
       border: 1px solid var(--accent) !important;
     }
 
@@ -485,7 +488,7 @@
       border-bottom: 2px solid var(--border);
       font-family: var(--f-display);
       font-weight: 700;
-      color: var(--primary);
+      color: var(--gz-text);
     }
 
     table.dataTable tbody td {
@@ -557,7 +560,7 @@
 
     .btn-edit:hover {
       background: var(--accent);
-      color: var(--primary);
+      color: var(--gz-text);
       transform: perspective(300px) rotateY(12deg) translateY(-2px);
     }
 
@@ -832,9 +835,13 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/cityhub-2026.css">
+<link rel="stylesheet" href="assets/css/genz-tokens.css">
+  <script defer src="assets/js/visibility-guard.js"></script>
+  <script defer src="assets/cityhub-2026.js"></script>
 </head>
 
-<body>
+<body class="gz-admin">
 
   <!-- Loading Overlay -->
   <div id="loadingOverlay">
@@ -849,7 +856,9 @@
     </div>
 
     <ul class="nav-menu">
-      <li><a href="#" class="nav-item active"><i class="ph-fill ph-squares-four"></i> Dashboard</a></li>
+      <li><a href="#" class="nav-item active" onclick="switchTab('properties', event)"><i class="ph-fill ph-squares-four"></i> Dashboard</a></li>
+      <li><a href="#" class="nav-item" onclick="switchTab('leads', event)"><i class="ph-fill ph-users"></i> AI Leads</a></li>
+      <li><a href="#" class="nav-item" onclick="switchTab('conversations', event)"><i class="ph-fill ph-chats"></i> Conversations</a></li>
       <li><a href="index.html" class="nav-item"><i class="ph-fill ph-globe"></i> View Website</a></li>
     </ul>
 
@@ -864,13 +873,14 @@
       <div style="display: flex; align-items: center; gap: 15px;">
         <button class="mobile-toggle" onclick="toggleSidebar()"><i class="ph ph-list"
             style="font-size: 24px;"></i></button>
-        <h1>Property Management</h1>
+        <h1 id="page-title">Property Management</h1>
       </div>
     </div>
 
-    <!-- Upload Form Card -->
-    <div class="card">
-      <h2 class="card-title"><i class="ph-fill ph-plus-circle"></i> Add New Property</h2>
+    <div id="tab-properties" class="tab-pane active">
+      <!-- Upload Form Card -->
+      <div class="card">
+        <h2 class="card-title"><i class="ph-fill ph-plus-circle"></i> Add New Property</h2>
 
       <form id="uploadForm" onsubmit="uploadData(event)">
         <div class="form-grid" style="display: block;">
@@ -889,7 +899,7 @@
 
           <div id="imageMetadataContainer" class="form-group full-width" style="display: none; margin-top: 20px;">
             <h3
-              style="font-size: 16px; margin-bottom: 20px; color: var(--primary); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              style="font-size: 16px; margin-bottom: 20px; color: var(--gz-text); display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <i class="ph-bold ph-images"></i> Listing Details
               <div style="margin-left: auto; display: flex; gap: 5px; flex-wrap: wrap;">
                 <button type="button" class="btn btn-secondary" style="padding: 6px 10px; font-size: 11px;"
@@ -919,7 +929,7 @@
     <!-- DataTable Card -->
     <div class="card">
       <h2 class="card-title"><i class="ph-fill ph-list-dashes"></i> Existing Listings</h2>
-      <div class="table-responsive" style="overflow-x: auto;">
+      <div class="table-responsive admin-table-wrap" style="overflow-x: auto;">
         <table id="listingsTable" class="display" style="width:100%">
           <thead>
             <tr>
@@ -935,6 +945,53 @@
             <!-- Data populated via JS -->
           </tbody>
         </table>
+      </div>
+    </div>
+    </div>
+
+    <div id="tab-leads" class="tab-pane" style="display: none;">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 class="card-title"><i class="ph-fill ph-users"></i> Lead Inbox</h2>
+          <button class="btn btn-primary" onclick="exportLeadsCSV()"><i class="ph-bold ph-download-simple"></i> Export CSV</button>
+        </div>
+        <div class="table-responsive admin-table-wrap" style="overflow-x: auto;">
+          <table id="leadsTable" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Requirement</th>
+                <th>Intent</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-conversations" class="tab-pane" style="display: none;">
+      <div class="card">
+        <h2 class="card-title"><i class="ph-fill ph-chats"></i> Recent Conversations</h2>
+        <div class="table-responsive admin-table-wrap" style="overflow-x: auto;">
+          <table id="conversationsTable" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>Last Active</th>
+                <th>Session ID</th>
+                <th>Messages</th>
+                <th>Language</th>
+                <th>Intent</th>
+                <th>Liked Property</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -976,13 +1033,33 @@
             <textarea id="edit-description" class="form-control" style="min-height: 100px;" required></textarea>
           </div>
 
-          <p style="font-size: 13px; color: #928C7E;">*Image editing is currently not supported via this modal. Delete
+          <p style="font-size: 13px; color:var(--gz-text-3);">*Image editing is currently not supported via this modal. Delete
             and re-upload to change images.</p>
         </form>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
         <button class="btn btn-primary" onclick="saveEdit()"><i class="ph ph-check-circle"></i> Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transcript Modal -->
+  <div class="modal-overlay" id="transcriptModal">
+    <div class="modal-content" style="max-width: 700px;">
+      <div class="modal-header">
+        <h2><i class="ph-fill ph-chats"></i> Conversation Transcript</h2>
+        <i class="ph ph-x close-modal" onclick="closeTranscriptModal()"></i>
+      </div>
+      <div class="field" style="padding:0 20px 8px;">
+        <label for="transcriptSearch">Filter messages</label>
+        <input id="transcriptSearch" type="search" placeholder="Search transcript">
+      </div>
+      <div class="modal-body" id="transcriptModalBody" style="display: flex; flex-direction: column; gap: 12px; max-height: 60vh; overflow-y: auto;">
+        <!-- Chat bubbles loaded dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeTranscriptModal()">Close</button>
       </div>
     </div>
   </div>
@@ -1067,7 +1144,7 @@
               <img src="${event.target.result}" alt="Selected listing preview" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;">
               <div style="overflow: hidden;">
                 <p style="font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${file.name}</p>
-                <p style="font-size: 10px; color: #64748B;">Listing ${index + 1}</p>
+                <p style="font-size: 10px; color:var(--gz-text-3);">Listing ${index + 1}</p>
               </div>
             </div>
             
@@ -1253,10 +1330,10 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td><img src="${thumbnail}" class="thumbnail" alt="Thumb"></td>
-            <td style="font-weight: 500; color: var(--primary);">${data.title}</td>
+            <td style="font-weight: 500; color: var(--gz-text);">${data.title}</td>
             <td><span class="badge ${badgeClass}">${data.category}</span></td>
             <td>${data.location || "N/A"}</td>
-            <td style="color:#64748B; font-size:13px;">${dateStr}</td>
+            <td style="color:var(--gz-text-3); font-size:13px;">${dateStr}</td>
             <td>
               <button class="btn-icon btn-edit" title="Edit" onclick="openEditModal('${id}')"><i class="ph-bold ph-pencil-simple"></i></button>
               <button class="btn-icon btn-delete" title="Delete" onclick="deleteListing('${id}')"><i class="ph-bold ph-trash"></i></button>
@@ -1340,6 +1417,337 @@
         }
       }
     }
+
+    window.switchTab = function(tabId, event) {
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      if (event) event.currentTarget.classList.add('active');
+      
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.style.display = 'none');
+      document.getElementById('tab-' + tabId).style.display = 'block';
+      
+      const titles = {
+        'properties': 'Property Management',
+        'leads': 'Lead Inbox',
+        'conversations': 'Conversations'
+      };
+      document.getElementById('page-title').innerText = titles[tabId];
+      
+      if (tabId === 'leads') loadLeads();
+      if (tabId === 'conversations') loadConversations();
+    }
+
+    let allLeads = [];
+    function renderLeadRows(leads) {
+      if ($.fn.DataTable.isDataTable('#leadsTable')) {
+        $('#leadsTable').DataTable().destroy();
+      }
+      const tbody = document.querySelector("#leadsTable tbody");
+      tbody.innerHTML = "";
+      allLeads = leads || [];
+      allLeads.forEach((data, index) => {
+        const rawDate = data.createdAt || data.updatedAt || data.timestamp;
+        let dateStr = "N/A";
+        if (rawDate) {
+          const d = typeof rawDate.toDate === "function" ? rawDate.toDate() : new Date(rawDate);
+          if (!isNaN(d.getTime())) {
+            dateStr = new Intl.DateTimeFormat('en-IN', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true
+            }).format(d);
+          }
+        }
+        let contactHtml = "";
+        if (data.phone) contactHtml += `<div>${data.phone}</div>`;
+        if (data.email) contactHtml += `<div style="font-size: 11px; color: #c7cde0;">${data.email}</div>`;
+        if (!contactHtml) contactHtml = "<div style='color:#9aa3c2'>—</div>";
+
+        const rawReq = String(data.category || data.officeType || "").trim();
+        let displayCategory = "Office Space";
+        let catStyle = "background:#312e81;color:#c4b5fd;";
+        if (/warehouse/i.test(rawReq)) {
+          displayCategory = "Warehouse";
+          catStyle = "background:#4c1d95;color:#ddd6fe;";
+        } else if (/showroom|retail/i.test(rawReq)) {
+          displayCategory = "Showroom";
+          catStyle = "background:#78350f;color:#fde68a;";
+        } else if (/cowork/i.test(rawReq)) {
+          displayCategory = "Coworking";
+          catStyle = "background:#1e3a8a;color:#bfdbfe;";
+        }
+
+        let reqHtml = `<span class="badge" style="${catStyle}margin-bottom:2px;font-weight:700;">${displayCategory}</span> `;
+        if (data.location) reqHtml += `<span class="badge" style="background:#3b2f12;color:#fbbf24;margin-bottom:2px;">${data.location}</span> `;
+        if (data.teamSize) reqHtml += `<span class="badge" style="background:#2e1065;color:#e9d5ff;margin-bottom:2px;">${data.teamSize}</span> `;
+        else if (data.requiredArea || data.sqft) reqHtml += `<span class="badge" style="background:#2e1065;color:#e9d5ff;margin-bottom:2px;">${data.requiredArea || data.sqft}</span> `;
+        if (data.timeline) reqHtml += `<span class="badge" style="background:#064e3b;color:#6ee7b7;margin-bottom:2px;">${data.timeline}</span> `;
+        if (data.company) reqHtml += `<div style="font-size:11px;margin-top:4px;font-weight:600;color:#f4f6ff;">Co: ${data.company}</div>`;
+        if (data.budget) reqHtml += `<div style="font-size:11px;color:#c7cde0;">Budget: ${data.budget}</div>`;
+
+        const statusText = data.status === "contacted" ? "Contacted" : "New";
+        const statusBadgeColor = data.status === "contacted" ? "background:#064e3b;color:#6ee7b7" : "background:#1f2937;color:#f4f6ff";
+        const leadKey = data.id || data.publicId || data.sessionId || "";
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td data-label="Date" style="color:#c7cde0; font-size:13px; white-space:nowrap;">${dateStr}</td>
+          <td data-label="Name" style="font-weight: 600; color: #ccff00;">${data.name || 'Anonymous'}</td>
+          <td data-label="Contact">${contactHtml}</td>
+          <td data-label="Requirement">${reqHtml || "<span style='color:#9aa3c2'>—</span>"}</td>
+          <td data-label="Intent"><span class="badge" style="background: ${data.intent==='handoff'?'rgba(239,68,68,0.2)':'rgba(16,185,129,0.2)'}; color: ${data.intent==='handoff'?'#fca5a5':'#6ee7b7'}">${data.intent || 'property_inquiry'}</span></td>
+          <td data-label="Status"><span class="badge" style="${statusBadgeColor}">${statusText}</span></td>
+          <td data-label="Actions" style="white-space:nowrap;">
+            <button class="btn btn-secondary" style="font-size:11px;padding:6px 10px;margin-right:4px;" onclick="openTranscriptModal(${index})"><i class="ph ph-chat-centered-text"></i> View Chat</button>
+            ${data.status !== 'contacted' ? `<button class="btn btn-primary" style="font-size:11px;padding:6px 10px;margin-right:4px;" onclick="markContacted('${leadKey}')">Mark Contacted</button>` : ''}
+            <button class="btn" style="background:var(--danger-bg);color:var(--danger);font-size:11px;padding:6px 10px;" onclick="deleteLead('${leadKey}')"><i class="ph ph-trash"></i> Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      $('#leadsTable').DataTable({"pageLength": 10, "responsive": true, "order": []});
+    }
+
+    async function loadLeads() {
+      const combined = new Map();
+
+      function getLeadKey(l) {
+        const rawPhone = String(l?.phone || "").replace(/\D/g, "").slice(-10);
+        if (rawPhone && rawPhone.length === 10) return `phone_${rawPhone}`;
+        return l?.publicId || l?.leadId || l?.id || l?.sessionId || "";
+      }
+
+      function mergeLead(key, incoming) {
+        if (!key) return;
+        if (!combined.has(key)) {
+          combined.set(key, incoming);
+        } else {
+          const prev = combined.get(key);
+          const earliestCreated = [prev.createdAt, incoming.createdAt].filter(Boolean).sort()[0];
+          combined.set(key, {
+            ...incoming,
+            ...prev,
+            name: prev.name || incoming.name,
+            company: prev.company || incoming.company,
+            category: prev.category || incoming.category || prev.officeType || incoming.officeType,
+            officeType: prev.officeType || incoming.officeType || prev.category || incoming.category,
+            createdAt: earliestCreated || prev.createdAt || incoming.createdAt,
+            id: prev.id || incoming.id || incoming.publicId
+          });
+        }
+      }
+
+      // 1. Load from Netlify Function (persists to Firestore + local store)
+      try {
+        const localRes = await fetch("/.netlify/functions/lead");
+        if (localRes.ok) {
+          const payload = await localRes.json();
+          if (Array.isArray(payload.leads)) {
+            payload.leads.forEach(l => {
+              const key = getLeadKey(l);
+              mergeLead(key, l);
+            });
+          }
+        }
+      } catch (e) {
+        console.warn("Function leads unavailable, using direct Firestore:", e);
+      }
+
+      // 2. Direct Firestore fallback query from commercial_leads & chat_leads
+      try {
+        const [commSnap, chatSnap] = await Promise.allSettled([
+          getDocs(collection(db, "commercial_leads")),
+          getDocs(collection(db, "chat_leads"))
+        ]);
+
+        if (commSnap.status === "fulfilled" && commSnap.value) {
+          commSnap.value.forEach(docSnap => {
+            const data = docSnap.data();
+            const id = docSnap.id;
+            const key = getLeadKey({ id, ...data });
+            mergeLead(key, { id, ...data });
+          });
+        }
+
+        if (chatSnap.status === "fulfilled" && chatSnap.value) {
+          chatSnap.value.forEach(docSnap => {
+            const data = docSnap.data();
+            const id = docSnap.id;
+            const key = getLeadKey({ id, ...data });
+            mergeLead(key, { id, ...data });
+          });
+        }
+      } catch (e) {
+        console.warn("Direct Firestore load warning:", e);
+      }
+
+      const list = Array.from(combined.values()).sort((a, b) => {
+        const dateA = a.createdAt || a.updatedAt || a.timestamp || "";
+        const dateB = b.createdAt || b.updatedAt || b.timestamp || "";
+        return String(dateB).localeCompare(String(dateA));
+      });
+
+      renderLeadRows(list);
+    }
+    
+    window.openTranscriptModal = function(leadIndex) {
+      const lead = allLeads[leadIndex];
+      if (!lead) return;
+      const body = document.getElementById("transcriptModalBody");
+      const search = document.getElementById("transcriptSearch");
+      if (search) search.value = "";
+      const renderBubbles = (filter = "") => {
+        body.innerHTML = "";
+        if (!lead.transcript || !lead.transcript.length) {
+          body.innerHTML = "<p style='color:#94a3b8;font-style:italic;text-align:center;padding:20px 0;'>No conversation history recorded for this lead.</p>";
+          return;
+        }
+        const q = filter.trim().toLowerCase();
+        lead.transcript.forEach(msg => {
+          const text = String(msg.content || msg.text || "");
+          if (q && !text.toLowerCase().includes(q) && !String(msg.role || "").toLowerCase().includes(q)) return;
+          const bubble = document.createElement("div");
+          const isBot = msg.role === 'assistant';
+          const stampRaw = msg.createdAt || msg.timestamp || msg.time || lead.updatedAt || lead.createdAt;
+          let stamp = "";
+          if (stampRaw) {
+            const d = typeof stampRaw.toDate === "function" ? stampRaw.toDate() : new Date(stampRaw);
+            if (!isNaN(d.getTime())) stamp = new Intl.DateTimeFormat('en-IN', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit', hour12:true }).format(d);
+          }
+          bubble.style.cssText = isBot
+            ? "align-self:flex-start;background:rgba(124,58,237,0.18);color:#fff;padding:12px 16px;border-radius:16px 16px 16px 4px;max-width:80%;font-size:13.5px;margin-bottom:8px;"
+            : "align-self:flex-end;background:#ccff00;color:#000;padding:12px 16px;border-radius:16px 16px 4px 16px;max-width:80%;font-size:13.5px;margin-left:auto;margin-bottom:8px;font-weight:600;";
+          bubble.innerHTML = `<div style="font-weight:700;font-size:11px;text-transform:uppercase;margin-bottom:4px;">${isBot ? 'Aria' : 'User'}${stamp ? ` · ${stamp}` : ""}</div>${text}`;
+          body.appendChild(bubble);
+        });
+        if (!body.children.length) {
+          body.innerHTML = "<p style='color:#94a3b8;text-align:center;padding:20px 0;'>No messages match that filter.</p>";
+        }
+      };
+      renderBubbles();
+      if (search) search.oninput = () => renderBubbles(search.value);
+      document.getElementById("transcriptModal").classList.add("active");
+    }
+    
+    window.closeTranscriptModal = function() {
+      document.getElementById("transcriptModal").classList.remove("active");
+    }
+    
+    window.markContacted = async function(id) {
+      if (confirm("Are you sure you want to mark this lead as contacted?")) {
+        try {
+          const res = await fetch("/.netlify/functions/lead", {
+            method: "PATCH",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ id, status: "contacted" })
+          });
+          try {
+            await Promise.allSettled([
+              updateDoc(doc(db, "chat_leads", id), { status: "contacted" }),
+              updateDoc(doc(db, "commercial_leads", id), { status: "contacted" })
+            ]);
+          } catch {}
+          loadLeads();
+        } catch (e) {
+          console.error("Status update failed:", e);
+          alert("Could not update lead status.");
+        }
+      }
+    }
+
+    window.deleteLead = async function(id) {
+      if (!id) return;
+      if (confirm("Are you sure you want to delete this lead?")) {
+        showLoading("Deleting lead...");
+        try {
+          try {
+            await fetch(`/.netlify/functions/lead?id=${encodeURIComponent(id)}`, {
+              method: "DELETE",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify({ id })
+            });
+          } catch (e) {
+            console.warn("Backend function delete warning:", e);
+          }
+          try {
+            await Promise.allSettled([
+              deleteDoc(doc(db, "chat_leads", id)),
+              deleteDoc(doc(db, "commercial_leads", id))
+            ]);
+          } catch (e) {
+            console.warn("Direct Firestore delete warning:", e);
+          }
+          hideLoading();
+          loadLeads();
+        } catch (e) {
+          hideLoading();
+          console.error("Delete lead error:", e);
+          alert("Could not delete lead. Please try again.");
+        }
+      }
+    };
+    
+    async function loadConversations() {
+      try {
+        const q = query(collection(db, "chat_sessions"), orderBy("lastActive", "desc"));
+        const snap = await getDocs(q);
+        
+        if ($.fn.DataTable.isDataTable('#conversationsTable')) {
+          $('#conversationsTable').DataTable().destroy();
+        }
+        
+        const tbody = document.querySelector("#conversationsTable tbody");
+        tbody.innerHTML = "";
+        
+        snap.forEach(docSnap => {
+          const data = docSnap.data();
+          const dateStr = data.lastActive ? new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(data.lastActive)) : "N/A";
+          
+          const liked = data.likedProperty || data.leadState?.likedProperty || {};
+          const likedTitle = data.likedPropertyTitle || liked.title;
+          const likedImg = data.likedPropertyImage || liked.imageUrl;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="color:#c7cde0; font-size:13px;">${dateStr}</td>
+            <td style="font-size:13px; font-family:monospace;">${docSnap.id.slice(0,8)}...</td>
+            <td style="font-weight: 500; color:#f4f6ff;">${data.messageCount || 0}</td>
+            <td>${data.language || 'en'}</td>
+            <td><span class="badge">${data.intent || 'unknown'}</span></td>
+            <td>${likedTitle ? `${likedImg ? `<img src="${likedImg}" alt="" style="width:36px;height:28px;object-fit:cover;border-radius:4px;vertical-align:middle;margin-right:6px;">` : ""}<span style="color:#f4f6ff">${likedTitle}</span>` : "—"}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+        
+        $('#conversationsTable').DataTable({"pageLength": 10, "responsive": true, "order": []});
+      } catch (e) {
+        console.error("Load conversations error", e);
+      }
+    }
+
+    window.exportLeadsCSV = function() {
+      if (!allLeads.length) return alert("No leads to export");
+      const headers = ["Date", "Name", "Phone", "Email", "Company", "Requirement", "Location", "Budget", "Team Size / Sq Ft", "Timeline", "Intent", "Status"];
+      const csvRows = [headers.join(",")];
+      allLeads.forEach(lead => {
+        const rawDate = lead.createdAt || lead.updatedAt;
+        const d = rawDate ? new Date(rawDate) : new Date();
+        const dateStr = isNaN(d.getTime()) ? "" : d.toISOString();
+        const category = lead.category || lead.officeType || "Office Space";
+        const row = [
+          dateStr, lead.name, lead.phone, lead.email, lead.company,
+          category, lead.location, lead.budget, lead.teamSize || lead.requiredArea || lead.sqft, lead.timeline || lead.moveInDate, lead.intent, lead.status || "new"
+        ].map(v => '"' + (v || "").toString().replace(/"/g, '""') + '"');
+        csvRows.push(row.join(","));
+      });
+      const blob = new Blob([csvRows.join("\n")], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `leads-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    };
 
     // Initial Load
     loadListings();

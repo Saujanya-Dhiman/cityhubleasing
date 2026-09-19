@@ -1,6 +1,11 @@
 [build]
   command = "npm run build"
   functions = "netlify/functions"
+  publish = "."
+
+[dev]
+  framework = "#static"
+  autoLaunch = false
 
 [functions]
   node_bundler = "esbuild"
@@ -15,7 +20,22 @@
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data:; font-src 'self' https: data:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self';"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+
 [[headers]]
   for = "/assets/cityhub-assistant*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/assets/js/chat-widget.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/assets/css/chat-widget.css"
   [headers.values]
     Cache-Control = "no-cache"

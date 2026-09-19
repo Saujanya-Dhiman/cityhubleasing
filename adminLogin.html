@@ -12,6 +12,8 @@
         gtag('config', 'G-D9M2WH6F9C');
     </script>
     <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add('gz-js')</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="CityHub Leasing administration login.">
@@ -27,6 +29,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
@@ -35,11 +38,11 @@
         :root {
             --ink: #060608;
             --panel: #0D0E12;
-            --gold: #D4A853;
-            --gold-lt: #F0CE8C;
-            --gold-dk: #B8863A;
-            --slate: #8B94A3;
-            --slate-lt: #4B5563;
+            --gold: #CCFF00;
+            --gold-lt: #DFFF4F;
+            --gold-dk: #A3CC00;
+            --slate: #CBD5E1;
+            --slate-lt: #94A3B8;
             --border: rgba(212, 168, 83, 0.18);
             --border-soft: rgba(255, 255, 255, 0.07);
             --f-display: 'Playfair Display', Georgia, serif;
@@ -474,8 +477,8 @@
 
         .login-btn:hover {
             background: var(--gold);
-            color: var(--ink);
-            box-shadow: 0 0 30px rgba(212, 168, 83, 0.35);
+            color: #000000;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.35);
             transform: translateY(-2px);
         }
 
@@ -668,9 +671,13 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/cityhub-2026.css">
+<link rel="stylesheet" href="assets/css/genz-tokens.css">
+  <script defer src="assets/js/visibility-guard.js"></script>
+  <script defer src="assets/cityhub-2026.js"></script>
 </head>
 
-<body>
+<body class="gz-login">
     <h1 class="sr-only">CityHub Leasing Admin Login</h1>
 
     <div class="backdrop" aria-hidden="true">

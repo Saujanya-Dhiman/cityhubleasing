@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap");
+
+:root {
+  --onyx: #030305;
+  --onyx-2: #0b0c12;
+  --slate-card: rgba(13, 14, 21, 0.75);
+  --slate-elevated: rgba(22, 24, 34, 0.9);
+  --gold: #ccff00;
+  --gold-lt: #ccff00;
+  --gold-dk: #a3cc00;
+  --ivory: #ffffff;
+  --muted: #cbd5e1;
+  --line: rgba(204, 255, 0, 0.28);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --glass: rgba(13, 14, 21, 0.75);
+  --f-display: "Syne", sans-serif;
+  --f-body: "Plus Jakarta Sans", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+}
+
+.glass-panel {
+  background: var(--glass);
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
+
+.gold-glow {
+  box-shadow: 0 0 0 1px rgba(212, 168, 83, 0.35), 0 12px 40px rgba(212, 168, 83, 0.18);
+}
+
+.card-hover-lift {
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo), border-color 0.4s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 168, 83, 0.4);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(212, 168, 83, 0.28);
+}

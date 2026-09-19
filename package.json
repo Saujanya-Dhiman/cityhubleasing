@@ -1,0 +1,16 @@
+{
+  "name": "cityhub-leasing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev --port 8888",
+    "build": "node scripts/sync-knowledge.mjs",
+    "index:knowledge": "node scripts/sync-knowledge.mjs"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^27.5.0"
+  }
+}

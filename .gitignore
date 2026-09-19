@@ -1,0 +1,11 @@
+node_modules/
+data/knowledge-manifest.json
+data/local-leads.json
+
+# Local Netlify folder
+.netlify
+
+# Environment files
+.env
+.env.*
+!.env.example
