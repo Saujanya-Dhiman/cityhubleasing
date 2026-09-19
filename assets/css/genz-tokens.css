@@ -1,0 +1,255 @@
+/* ===================================================================
+   genz-tokens.css — CityHub Cyber-Luxury high-contrast layer
+   LOAD ORDER: last stylesheet in <head>, after EVERY inline <style>.
+   =================================================================== */
+
+/* 1 ─ TOKENS ------------------------------------------------------- */
+:root{
+  color-scheme:dark;
+  --gz-bg:#030305;                       /* Deep Obsidian — mandatory body bg */
+  --gz-surface:rgba(13,14,21,.88);       /* Glass Onyx card */
+  --gz-surface-solid:#0D0E15;            /* opaque equivalent (inputs, menus) */
+  --gz-text:#FFFFFF;                     /* h1–h6, titles, card headers */
+  --gz-text-2:#CBD5E1;                   /* body copy, descriptions, FAQ answers */
+  --gz-text-3:#94A3B8;                   /* captions/placeholders only (≥4.5:1) */
+  --gz-accent:#CCFF00;                   /* Neon Lime */
+  --gz-accent-hover:#DFFF4F;
+  --gz-on-accent:#000000;                /* text ON lime — 21:1 */
+  --gz-border:rgba(255,255,255,.12);
+  --gz-border-strong:rgba(255,255,255,.28);
+  --gz-danger:#FF6B6B;
+  --gz-success:#4ADE80;
+  --gz-blur:blur(16px);
+  --gz-font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gz-font-display:'Syne',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gz-font-body:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gz-touch:48px;
+}
+
+/* 2 ─ BASE --------------------------------------------------------- */
+html{background:var(--gz-bg);color-scheme:dark}
+body{background-color:var(--gz-bg)!important;color:var(--gz-text-2)}
+::selection{background:var(--gz-accent);color:#000}
+:where(:focus-visible){outline:2px solid var(--gz-accent);outline-offset:3px}
+.nowrap{white-space:nowrap}
+
+/* 3 ─ TEXT ROLES (zero specificity, !important wipes legacy/inline) - */
+:where(h1,h2,h3,h4,h5,h6,.section-title,.hero-headline,.faq-question){color:var(--gz-text)!important}
+:where(p,li,dd,figcaption,.faq-answer,.faq-answer *,.section-sub,.hero-sub,.stat-label,.location-sub){color:var(--gz-text-2)!important}
+::placeholder{color:var(--gz-text-3);opacity:1}
+/* Any container that sits on a lime background opts in with .gz-on-lime */
+.gz-on-lime,.gz-on-lime :where(*){color:var(--gz-on-accent)!important}
+
+/* Wipe leftover light-theme INLINE styles (never touch lime-backed elements) */
+[style*="background:#fff" i]:not([style*="ccff00" i]),
+[style*="background: #fff" i]:not([style*="ccff00" i]),
+[style*="background:#ffffff" i],[style*="background: #ffffff" i],
+[style*="background:white" i],[style*="background: white" i],
+[style*="background:#fafaf8" i],[style*="background: #fafaf8" i],
+[style*="background-color:#fff" i],[style*="background-color: #fff" i]{
+  background:var(--gz-surface-solid)!important}
+[style*="color:#000" i]:not([style*="ccff00" i]),[style*="color: #000" i]:not([style*="ccff00" i]),
+[style*="color:#0a0a0f" i]:not([style*="ccff00" i]),[style*="color: #0a0a0f" i]:not([style*="ccff00" i]),
+[style*="color:#111" i]:not([style*="ccff00" i]),[style*="color: #111" i]:not([style*="ccff00" i]),
+[style*="color:#333" i]:not([style*="ccff00" i]),[style*="color: #333" i]:not([style*="ccff00" i]),
+[style*="color:#55524b" i],[style*="color:#64748b" i],[style*="color: #64748b" i],
+[style*="color:#928c7e" i],[style*="color: #928c7e" i]{
+  color:var(--gz-text-2)!important}
+
+/* 4 ─ SURFACES: Glass Onyx cards ---------------------------------- */
+.space-card,.listing-card,.property-card,.skeleton-card,.info-box,.trust-item,
+.faq-item,.highlights-inner,.highlight-item,.location-card,.feature-item{
+  background:var(--gz-surface)!important;
+  -webkit-backdrop-filter:var(--gz-blur);backdrop-filter:var(--gz-blur);
+  border:1px solid var(--gz-border)!important;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.7);
+}
+/* Image cards: legible text over photos needs a real scrim (verify class in markup) */
+.location-overlay{background:linear-gradient(to top,rgba(3,3,5,.92) 0%,rgba(3,3,5,.55) 45%,rgba(3,3,5,0) 100%)}
+
+/* 5 ─ NAV / LOADER / SECTIONS / FOOTER (root-cause overrides) ------ */
+#loader{background:var(--gz-bg)!important}
+.loader-logo{color:#fff!important}
+nav.scrolled,#navbar.scrolled{
+  background:rgba(3,3,5,.82)!important;
+  -webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1px solid var(--gz-border);box-shadow:none}
+.features-section,.cta-section{background:var(--gz-bg)!important}
+footer{background:var(--gz-bg)!important;border-top:1px solid var(--gz-border)}
+footer :where(p,li,span,small,address){color:var(--gz-text-2)!important}
+footer a{color:var(--gz-text-2)!important}
+footer a:hover{color:var(--gz-accent)!important}
+footer .logo,.footer-brand .logo{color:#fff!important}
+
+/* 6 ─ BUTTONS: Neon Lime + Pure Black (21:1) ---------------------- */
+.btn-primary,.btn-gold,.nav-cta,.contact-form button,.gz-btn,.btn-tour,.schedule-btn,.hero-search__submit,
+.btn:not(.btn-ghost):not(.btn-wa){
+  background:var(--gz-accent)!important;color:var(--gz-on-accent)!important;
+  font-weight:700;border-color:var(--gz-accent);text-shadow:none}
+.cre-hero .motion-cta,.motion-drawer-cta .motion-cta{
+  background:var(--gz-accent)!important;color:#000!important;font-weight:700}
+.btn-text-link{color:#fff!important}
+.btn-primary,.btn-gold,.contact-form button,.btn-tour{min-height:var(--gz-touch)}
+.nav-cta,.btn:not(.btn-ghost):not(.btn-wa){min-height:44px}
+.btn-primary:hover,.btn-gold:hover,.nav-cta:hover,.contact-form button:hover,.gz-btn:hover,.btn-tour:hover,.schedule-btn:hover,
+.btn:not(.btn-ghost):not(.btn-wa):hover{background:var(--gz-accent-hover)!important;color:#000!important}
+.btn-primary *,.btn-gold *,.nav-cta *,.contact-form button *,.gz-btn *,.btn-tour *{color:inherit!important}
+.btn-ghost{background:transparent!important;color:var(--gz-text)!important;border:1px solid var(--gz-border-strong)!important}
+.btn-ghost:hover{border-color:var(--gz-accent)!important;color:var(--gz-accent)!important}
+.listing-enquire,.card-action{color:var(--gz-accent)!important}
+.listing-card:hover .listing-enquire,.space-card:hover .card-action{color:#fff!important}
+
+/* Lime chips revealed on hover: icon must flip to black */
+.space-card:hover .space-card-icon,.highlight-item:hover .highlight-icon,
+.trust-item:hover .trust-icon,.info-box:hover i,.social-btn:hover,.social-links a:hover{
+  background:var(--gz-accent)!important;border-color:var(--gz-accent)!important;color:#000!important}
+.space-card:hover .space-card-icon *,.highlight-item:hover .highlight-icon *,
+.trust-item:hover .trust-icon *,.social-btn:hover *,.social-links a:hover *{color:#000!important}
+.faq-item.active .faq-toggle{background:var(--gz-accent)!important;border-color:var(--gz-accent)!important;color:#000!important}
+
+/* 7 ─ METRICS / SPECS / PRICES: lime JetBrains Mono ----------------- */
+/* 7a numeric VALUES — never wrap */
+.stat-num,.image-badge-num,.property-card__price,.listing-price,.spec-value,[data-metric]{
+  font-family:var(--gz-font-mono)!important;color:var(--gz-accent)!important;
+  font-variant-numeric:tabular-nums;white-space:nowrap;overflow-wrap:normal;word-break:keep-all}
+/* 7b spec/location TAG groups — may wrap BETWEEN items, never inside a number */
+.listing-loc,.location-tag,.property-card__meta,.property-specs{
+  font-family:var(--gz-font-mono)!important;color:var(--gz-accent)!important;
+  font-variant-numeric:tabular-nums;overflow-wrap:normal;word-break:keep-all}
+.property-specs,.property-card__meta{display:flex;flex-wrap:wrap;gap:6px 14px}
+.property-specs>*,.property-card__meta>*{white-space:nowrap}
+.location-name{color:#fff!important}
+
+/* 8 ─ FORMS: floating labels, ≥48px targets ------------------------ */
+:where(input,select,textarea){color-scheme:dark}
+.gz-field{position:relative;margin-bottom:16px}
+.gz-field :is(input,select,textarea){
+  width:100%;min-height:var(--gz-touch);padding:22px 16px 8px;
+  background:var(--gz-surface-solid)!important;color:var(--gz-text)!important;
+  border:1px solid var(--gz-border-strong)!important;border-radius:12px;
+  font:500 16px/1.3 var(--gz-font-body);
+  transition:border-color .18s,box-shadow .18s}
+.gz-field textarea{min-height:120px;padding-top:26px;resize:vertical}
+.gz-field :is(input,select,textarea):focus{
+  outline:0;border-color:var(--gz-accent)!important;box-shadow:0 0 0 3px rgba(204,255,0,.25)}
+.gz-field label{
+  position:absolute;left:16px;top:15px;margin:0;pointer-events:none;
+  color:var(--gz-text-3)!important;font:500 16px/1 var(--gz-font-body);
+  transform-origin:left top;transition:transform .18s ease,color .18s ease}
+.gz-field :is(input,textarea):focus ~ label,
+.gz-field :is(input,textarea):not(:placeholder-shown) ~ label,
+.gz-field select ~ label,
+.gz-field :is(input[type=date],input[type=time],input[type=file]) ~ label{
+  transform:translateY(-9px) scale(.75)}
+.gz-field :is(input,textarea,select):focus ~ label{color:var(--gz-accent)!important}
+.gz-field :is(input,textarea,select)[aria-invalid="true"]{border-color:var(--gz-danger)!important}
+.gz-field :is(input,textarea,select):user-invalid{border-color:var(--gz-danger)!important}
+.gz-field .field-error{color:var(--gz-danger)!important;font-size:13px;margin-top:6px}
+select option{background:#0D0E15;color:#fff}
+input:-webkit-autofill,textarea:-webkit-autofill,select:-webkit-autofill{
+  -webkit-text-fill-color:#fff!important;caret-color:#fff;
+  box-shadow:0 0 0 1000px #0D0E15 inset!important;transition:background-color 9999s ease-out}
+:where(input[type=checkbox],input[type=radio]){accent-color:var(--gz-accent);min-width:20px;min-height:20px}
+
+/* Lead modal / Aria: CSS-only (JS injects label-above-input; do not reorder) */
+.ch-lead input,.ch-lead select,.aria-lead input,.aria-composer input,.ch26-search input{
+  min-height:var(--gz-touch);font-size:16px;color:#fff;background:var(--gz-surface-solid)}
+.ch-lead__primary,.aria-lead button[type=submit],.ch26-search button{
+  background:var(--gz-accent)!important;color:#000!important;font-weight:700;min-height:var(--gz-touch)}
+
+/* 9 ─ VISIBILITY SAFETY NET (conditional — see Phase 2) ------------- */
+/* 9a Default = VISIBLE. Beats legacy .reveal{opacity:0;transform:…} */
+.reveal,.reveal-left,.reveal-right,
+.hero-eyebrow,.hero-headline,.hero-sub,.hero-actions,.hero-stats{opacity:1;transform:none}
+/* 9b Hidden-until-animated ONLY when JS is on AND the guard has not declared failure.
+      (.gz-js is set by a 1-line head script; .gz-safe is set by visibility-guard.js) */
+html.gz-js:not(.gz-safe) :is(.reveal,.reveal-left,.reveal-right,
+  .hero-eyebrow,.hero-headline,.hero-sub,.hero-actions,.hero-stats){opacity:0}
+/* 9c Element rescued by the guard */
+.gz-visible{opacity:1!important;visibility:visible!important}
+.gz-visible:not(:hover){transform:none!important}
+/* 9d GSAP missing / reduced-motion / fatal: everything protected is visible, no motion.
+      :not(:hover) keeps card hover-lift working. */
+html.gz-safe :is(.reveal,.reveal-left,.reveal-right,.space-card,.location-card,
+  .feature-item,.highlight-item,.listing-card,.property-card,.faq-item,.cta-block,
+  .hero-eyebrow,.hero-headline,.hero-sub,.hero-actions,.hero-stats):not(:hover){
+  opacity:1!important;visibility:visible!important;transform:none!important}
+html.gz-safe :is(.reveal,.reveal-left,.reveal-right,.space-card,.location-card,
+  .feature-item,.highlight-item,.listing-card,.property-card,.faq-item,.cta-block,
+  .hero-eyebrow,.hero-headline,.hero-sub,.hero-actions,.hero-stats){
+  opacity:1!important;visibility:visible!important}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+/* NEVER add .dropdown-panel, .dropdown-menu, .location-arrow, #loader, modals or
+   accordion panels to any rule above — their opacity:0 is intentional (F11). */
+
+/* 10 ─ MOBILE 375px ------------------------------------------------- */
+@media (max-width:480px){
+  .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
+  .hero-stats>*{min-width:0}
+  .stat-num{font-size:clamp(1.25rem,6.2vw,1.75rem)}
+  .image-badge-num,.property-card__price{font-size:clamp(1.1rem,5.4vw,1.5rem)}
+  img,video,svg{max-width:100%}
+  html,body{overflow-x:hidden}
+  :where(a,button,summary,.faq-question){min-height:44px}
+  .highlights-inner{display:flex;flex-direction:column}
+  .footer-top,.footer-grid{display:flex;flex-direction:column;gap:28px}
+  .contact-form button,.gz-field :is(input,select,textarea){width:100%}
+}
+
+/* 11 ─ ADMIN (scoped; add class="gz-admin" to <body> in admin.html) - */
+body.gz-admin{
+  --bg:#030305;--surface:rgba(13,14,21,.88);--text:#CBD5E1;
+  --border:rgba(255,255,255,.12);--border-dk:rgba(255,255,255,.24);
+  --accent:#CCFF00;--accent-lt:#DFFF4F;--accent-dk:#A3CC00;--danger-bg:rgba(255,107,107,.12)}
+body.gz-admin .dataTables_wrapper,
+body.gz-admin .dataTables_wrapper :is(label,.dataTables_info,.dataTables_length,.dataTables_filter){
+  color:var(--gz-text-2)!important}
+body.gz-admin table.dataTable{background:transparent;color:var(--gz-text-2)}
+body.gz-admin table.dataTable thead th{
+  color:#fff!important;background:rgba(255,255,255,.04)!important;
+  border-bottom:1px solid var(--gz-border-strong)!important}
+body.gz-admin table.dataTable thead :is(.sorting,.sorting_asc,.sorting_desc):is(:before,:after){color:#fff!important}
+body.gz-admin table.dataTable tbody :is(tr,tr.odd,tr.even){background:transparent!important}
+body.gz-admin table.dataTable tbody td{color:var(--gz-text-2);border-top:1px solid var(--gz-border)!important}
+body.gz-admin table.dataTable tbody tr:hover{background:rgba(204,255,0,.06)!important}
+body.gz-admin .dataTables_wrapper :is(.dataTables_filter input,.dataTables_length select){
+  background:var(--gz-surface-solid)!important;color:#fff!important;
+  border:1px solid var(--gz-border-strong)!important;min-height:40px;border-radius:10px}
+body.gz-admin .dataTables_wrapper .dataTables_paginate .paginate_button{
+  color:var(--gz-text-2)!important;background:transparent!important;border:1px solid transparent!important}
+body.gz-admin .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current):not(.disabled){
+  background:rgba(255,255,255,.08)!important;color:#fff!important;border-color:var(--gz-border-strong)!important}
+body.gz-admin .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+body.gz-admin .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background:var(--gz-accent)!important;color:#000!important;border-color:var(--gz-accent)!important}
+body.gz-admin .dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+  color:var(--gz-text-3)!important;opacity:.6}
+body.gz-admin .table-scroll,body.gz-admin .dataTables_wrapper{overflow-x:auto}
+body.gz-admin .form-control{
+  min-height:var(--gz-touch);background:var(--gz-surface-solid)!important;color:#fff!important;
+  border:1px solid var(--gz-border-strong)!important;font-size:16px}
+body.gz-admin .form-control:focus{background:var(--gz-surface-solid)!important;border-color:var(--gz-accent)!important}
+body.gz-admin .form-label{color:var(--gz-text-2)!important}
+body.gz-admin .btn,body.gz-admin .btn-primary{
+  background:var(--gz-accent)!important;color:#000!important;min-height:44px;font-weight:700}
+body.gz-admin .nav-item{color:var(--gz-text-2)!important}
+body.gz-admin .nav-item:hover,body.gz-admin .nav-item.active{color:#000!important;background:var(--gz-accent)!important}
+
+/* 12 ─ ADMIN LOGIN (scoped; add class="gz-login" to <body>) --------- */
+body.gz-login{
+  --gold:#CCFF00;--gold-lt:#DFFF4F;--gold-dk:#A3CC00;
+  --slate:#CBD5E1;--slate-lt:#94A3B8;
+  --border:rgba(255,255,255,.12);--border-soft:rgba(255,255,255,.12)}
+body.gz-login .login-card{
+  background:var(--gz-surface)!important;border:1px solid var(--gz-border)!important;
+  -webkit-backdrop-filter:var(--gz-blur);backdrop-filter:var(--gz-blur)}
+body.gz-login .login-btn{
+  background:var(--gz-accent)!important;color:#000!important;font-weight:700;min-height:var(--gz-touch);border:0}
+body.gz-login .login-btn:hover{background:var(--gz-accent-hover)!important;color:#000!important}
+body.gz-login .input-group input{
+  min-height:var(--gz-touch);font-size:16px!important;background:var(--gz-surface-solid)!important;color:#fff!important;
+  border:1px solid var(--gz-border-strong)!important}
+body.gz-login .input-label,body.gz-login .hud-label,body.gz-login .hud-value{color:var(--gz-text-2)!important}
+body.gz-login h2,body.gz-login .login-logo{color:#fff!important}
