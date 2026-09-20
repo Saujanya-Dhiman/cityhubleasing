@@ -113,11 +113,29 @@ export function db() {
   if (database) return database;
   if (process.env.FIREBASE_SERVICE_ACCOUNT) {
     try {
-      const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-      if (serviceAccount && serviceAccount.project_id && serviceAccount.private_key) {
-        if (!admin.apps.length) admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
-        database = admin.firestore();
-        return database;
+      let clean = String(process.env.FIREBASE_SERVICE_ACCOUNT).trim();
+      if (
+        (clean.startsWith("'") && clean.endsWith("'")) ||
+        (clean.startsWith('"') && clean.endsWith('"') && !clean.startsWith('{"'))
+      ) {
+        clean = clean.slice(1, -1).trim();
+      }
+      if (!clean.startsWith("{") && /^[A-Za-z0-9+/=]+$/.test(clean)) {
+        try {
+          const decoded = Buffer.from(clean, "base64").toString("utf8").trim();
+          if (decoded.startsWith("{")) clean = decoded;
+        } catch {}
+      }
+      const serviceAccount = JSON.parse(clean);
+      if (serviceAccount && typeof serviceAccount === "object") {
+        if (typeof serviceAccount.private_key === "string") {
+          serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
+        }
+        if (serviceAccount.project_id && serviceAccount.private_key) {
+          if (!admin.apps.length) admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+          database = admin.firestore();
+          return database;
+        }
       }
     } catch (e) {
       console.warn("Invalid FIREBASE_SERVICE_ACCOUNT, falling back to REST client:", e.message);

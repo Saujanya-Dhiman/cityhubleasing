@@ -614,12 +614,13 @@
       border: 1px solid var(--border);
       margin-top: 26px;
       height: 250px;
-      filter: grayscale(0.15);
+      position: relative;
     }
 
     .map-box iframe {
       width: 100%;
       height: 100%;
+      min-height: 250px;
       border: 0;
       display: block;
     }
@@ -1298,8 +1299,15 @@
 
           <!-- Google Map -->
           <div class="map-box">
-            <iframe src="https://www.google.com/maps?q=CityHub+Leasing+Office+Sector+74+Mohali&output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            <iframe 
+              src="https://maps.google.com/maps?q=Phase+8b+Industrial+Area+Sector+74+Mohali&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="CityHub Leasing Location Map">
             </iframe>
           </div>
         </div>
