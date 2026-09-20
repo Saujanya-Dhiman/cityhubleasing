@@ -15,6 +15,57 @@ const chunk = (text, size = 950, overlap = 140) => {
   return output.filter(part => part.length > 120);
 };
 
+export function parseFirebaseServiceAccount(rawEnv) {
+  const raw = rawEnv !== undefined ? rawEnv : process.env.FIREBASE_SERVICE_ACCOUNT;
+  if (!raw || !String(raw).trim()) {
+    throw new Error(
+      "Configuration error: FIREBASE_SERVICE_ACCOUNT environment variable is missing. " +
+      "Please set FIREBASE_SERVICE_ACCOUNT in your Netlify site configuration with valid service-account JSON."
+    );
+  }
+
+  let clean = String(raw).trim();
+  // Handle surrounding single or double quotes from env configs
+  if (
+    (clean.startsWith("'") && clean.endsWith("'")) ||
+    (clean.startsWith('"') && clean.endsWith('"') && !clean.startsWith('{"'))
+  ) {
+    clean = clean.slice(1, -1).trim();
+  }
+
+  // Handle base64 encoded JSON
+  if (!clean.startsWith("{") && /^[A-Za-z0-9+/=]+$/.test(clean)) {
+    try {
+      const decoded = Buffer.from(clean, "base64").toString("utf8").trim();
+      if (decoded.startsWith("{")) clean = decoded;
+    } catch {}
+  }
+
+  let serviceAccount;
+  try {
+    serviceAccount = JSON.parse(clean);
+  } catch {
+    throw new Error(
+      "Configuration error: FIREBASE_SERVICE_ACCOUNT contains malformed JSON. " +
+      "The Netlify environment variable must contain valid service-account JSON."
+    );
+  }
+
+  if (!serviceAccount || typeof serviceAccount !== "object" || Array.isArray(serviceAccount)) {
+    throw new Error(
+      "Configuration error: FIREBASE_SERVICE_ACCOUNT contains malformed JSON. " +
+      "The Netlify environment variable must contain valid service-account JSON."
+    );
+  }
+
+  // Correctly handle escaped \n characters in private_key
+  if (typeof serviceAccount.private_key === "string") {
+    serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
+  }
+
+  return serviceAccount;
+}
+
 async function staticSources() {
   const files = (await readdir(root)).filter(file => file.endsWith(".html") && !excluded.has(file));
   const sources = [];
@@ -55,36 +106,47 @@ async function embeddings(inputs) {
   return (data.data || []).map(item => item.embedding);
 }
 
-const pages = await staticSources();
-await mkdir(path.join(root, "data"), { recursive: true });
-await writeFile(path.join(root, "data", "knowledge-manifest.json"), JSON.stringify({ generatedAt: new Date().toISOString(), sources: pages.map(({ embedding, ...source }) => source) }, null, 2));
-console.log(`Prepared ${pages.length} website content chunks.`);
+async function main() {
+  const pages = await staticSources();
+  await mkdir(path.join(root, "data"), { recursive: true });
+  await writeFile(
+    path.join(root, "data", "knowledge-manifest.json"),
+    JSON.stringify({ generatedAt: new Date().toISOString(), sources: pages.map(({ embedding, ...source }) => source) }, null, 2)
+  );
+  console.log(`Prepared ${pages.length} website content chunks.`);
 
-if (!process.env.OPENAI_API_KEY || !process.env.FIREBASE_SERVICE_ACCOUNT) {
-  console.log("Skipping Firestore embedding sync: OPENAI_API_KEY and FIREBASE_SERVICE_ACCOUNT are required in the deployment environment.");
-  process.exit(0);
-}
-
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
-const database = admin.firestore();
-const sources = [...pages, ...(await listingSources(database))];
-let vectors = [];
-try {
-  for (let index = 0; index < sources.length; index += 50) {
-    vectors.push(...(await embeddings(sources.slice(index, index + 50).map(source => source.text))));
+  const serviceAccount = parseFirebaseServiceAccount();
+  if (!admin.apps.length) {
+    admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
   }
-} catch (error) {
-  console.error("Embeddings unavailable; syncing lexical chunks only.", error.message);
-  vectors = [];
+  const database = admin.firestore();
+  const sources = [...pages, ...(await listingSources(database))];
+  let vectors = [];
+  try {
+    for (let index = 0; index < sources.length; index += 50) {
+      vectors.push(...(await embeddings(sources.slice(index, index + 50).map(source => source.text))));
+    }
+  } catch (error) {
+    console.error("Embeddings unavailable; syncing lexical chunks only.", error.message);
+    vectors = [];
+  }
+  const existing = await database.collection("knowledge_chunks").get();
+  const batch = database.batch();
+  existing.docs.forEach(document => batch.delete(document.ref));
+  sources.forEach((source, index) => {
+    const payload = { ...source, updatedAt: new Date().toISOString() };
+    if (Array.isArray(vectors[index])) payload.embedding = vectors[index];
+    batch.set(database.collection("knowledge_chunks").doc(source.id), payload);
+  });
+  await batch.commit();
+  console.log(`Synced ${sources.length} grounded knowledge chunks to Firestore${vectors.length ? " with embeddings" : " (lexical only)"}.`);
 }
-const existing = await database.collection("knowledge_chunks").get();
-const batch = database.batch();
-existing.docs.forEach(document => batch.delete(document.ref));
-sources.forEach((source, index) => {
-  const payload = { ...source, updatedAt: new Date().toISOString() };
-  if (Array.isArray(vectors[index])) payload.embedding = vectors[index];
-  batch.set(database.collection("knowledge_chunks").doc(source.id), payload);
-});
-await batch.commit();
-console.log(`Synced ${sources.length} grounded knowledge chunks to Firestore${vectors.length ? " with embeddings" : " (lexical only)"}.`);
+
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
+if (isDirectRun || process.argv[1]?.endsWith("sync-knowledge.mjs")) {
+  main().catch(error => {
+    console.error(error.message || error);
+    process.exit(1);
+  });
+}
+
