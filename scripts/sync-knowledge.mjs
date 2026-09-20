@@ -115,7 +115,13 @@ async function main() {
   );
   console.log(`Prepared ${pages.length} website content chunks.`);
 
-  const serviceAccount = parseFirebaseServiceAccount();
+  let serviceAccount;
+  try {
+    serviceAccount = parseFirebaseServiceAccount();
+  } catch (error) {
+    console.warn(`${error.message} Skipping Firestore knowledge sync for this build.`);
+    return;
+  }
   if (!admin.apps.length) {
     admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
   }
